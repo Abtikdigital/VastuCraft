@@ -6,17 +6,17 @@ function services() {
   const services = [
     {
       title: "Interior Design",
-      desc: "Modern and aesthetic home interiors.",
+      desc: "Achieve the perfect balance of ambient, task, and accent lighting for a functional atmosphere ",
       img: Image1,
     },
     {
       title: "Office Spaces",
-      desc: "Functional and stylish workspaces.",
+      desc: "Achieve the perfect balance of ambient, task, and accent lighting for a functional atmosphere",
       img: Image2,
     },
     {
       title: "Custom Furniture",
-      desc: "Tailor-made furniture for your needs.",
+      desc: "Achieve the perfect balance of ambient, task, and accent lighting for a functional atmosphere ",
       img: Image3,
     },
   ];
@@ -34,7 +34,7 @@ function services() {
           {services.map((service, i) => (
             <div
               key={i}
-              className="p-6 border rounded-xl shadow-sm hover:shadow-lg transition flex  gap-3"
+              className="p-6   transition flex  gap-3"
             >
               <div ><img src={service?.img} className="h-14"/></div>
               <div>
