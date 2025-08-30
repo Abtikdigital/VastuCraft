@@ -1,24 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
+import Image1 from "../assets/Steps/Image1.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function Steps() {
-  const steps = [
-    { num: "01", title: "Consultation", desc: "Discuss your ideas & needs with our experts." },
-    { num: "02", title: "Design Process", desc: "We craft personalized designs for your space." },
-    { num: "03", title: "Implementation", desc: "Turning your dream design into reality." },
+  const [openFaqIndex, setOpenFaqIndex] = useState(-1);
+  const faqs = [
+    {
+      question: "How do you ensure the design reflects my personal style?",
+      answer:
+        "We start with a detailed consultation to understand your preferences, lifestyle, and vision. Our designers then create customized mood boards and 3D renderings, ensuring every detail aligns with your unique style.",
+    },
+    {
+      question: "What is the typical timeline for a design project?",
+      answer:
+        "Timelines vary based on project scope, but a standard residential project typically takes 8-12 weeks from concept to completion. We provide a detailed schedule during the planning phase to keep everything on track.",
+    },
+    {
+      question: "Can you work within my budget?",
+      answer:
+        "Absolutely! We tailor our designs to fit your budget, offering flexible options and transparent pricing. Our team sources high-quality materials and furnishings to maximize value without compromising on style.",
+    },
   ];
 
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? -1 : index);
+  };
+
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold text-gray-900">Designing Your Dream in Three Simple Steps</h2>
-        <div className="mt-12 grid md:grid-cols-3 gap-10">
-          {steps.map((step, i) => (
-            <div key={i} className="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
-              <h3 className="text-4xl font-bold text-gray-900">{step.num}</h3>
-              <h4 className="mt-4 text-xl font-semibold">{step.title}</h4>
-              <p className="mt-2 text-gray-600">{step.desc}</p>
+    <section className="p-8 md:p-14 bg-gray-50 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+      <div className="flex justify-center items-center">
+        <img
+          src={Image1}
+          alt="Interior design inspiration"
+          className="w-full "
+        />
+      </div>
+      <div className=" flex items-center">
+        <div className="space-y-10">
+
+
+        <h2 className="text-[#1F1F1F] font-semibold text-3xl md:text-4xl font-1 leading-tight">
+          Designing Your Dream With Brilliance
+        </h2>
+        <p className="text-[#545454] font-1 text-base md:text-lg leading-relaxed">
+          Elevate your spaces with bespoke interior designs that reflect your
+          unique style and aspirations, crafted with precision and brilliance
+          for an unforgettable living experience.
+        </p>
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className="border-b border-gray-200 pb-4 last:border-b-0 "
+            >
+              <h3
+                onClick={() => toggleFaq(index)}
+                className="flex justify-between items-center text-[#1F1F1F] font-1 font-semibold text-lg md:text-xl cursor-pointer  transition-colors duration-200"
+              >
+                <span>{faq.question}</span>
+                <FontAwesomeIcon
+                  icon={openFaqIndex === index ? faMinus : faPlus}
+                  className="text-[#1F1F1F] text-lg"
+                />
+              </h3>
+              {openFaqIndex === index && (
+                <p className="mt-3 text-[#545454] font-1 text-base leading-relaxed">
+                  {faq.answer}
+                </p>
+              )}
             </div>
           ))}
+        </div>
         </div>
       </div>
     </section>

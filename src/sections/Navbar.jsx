@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../assets/logo/Logo.png";
+import Logo from "../assets/logo/Logo1.png";
 import { Link, useLocation } from "react-router-dom";
 import { X, Menu } from "lucide-react";
 
@@ -19,7 +19,7 @@ function Navbar() {
   return (
     <>
       {/* Desktop Navbar */}
-      <section className="hidden md:flex justify-between items-center py-4 px-12 sticky top-0 bg-white z-50 shadow-md">
+      <section className="hidden md:flex justify-between items-center py-4 px-12 sticky top-0 bg-white z-[9999] shadow-md">
         <div>
           <img
             src={Logo}
@@ -53,16 +53,16 @@ function Navbar() {
       </section>
 
       {/* Mobile Navbar */}
-      <section className="block md:hidden p-5 sticky top-0  z-50 shadow-md">
+      <section className="block md:hidden p-5 sticky top-0  shadow-md bg-white z-[9999]">
         <div className="flex justify-between items-center">
           <img
             src={Logo}
             alt="Logo"
-            className="h-10 transition-transform duration-300"
+            className="h-14 transition-transform duration-300"
           />
           <button
             onClick={toggleMenu}
-            className="p-2 rounded-lg bg-white/80 backdrop-blur-sm text-[#1F1F1F] hover:bg-white transition-all duration-300"
+            className="p-2 rounded-xs bg-white/80 backdrop-blur-sm text-[#1F1F1F] hover:bg-white transition-all duration-300"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

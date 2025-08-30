@@ -1,22 +1,48 @@
 import React from "react";
-
+import Image1 from "../assets/OurServices/Interior design icon.png";
+import Image2 from "../assets/OurServices/Lighting design icon.png";
+import Image3 from "../assets/OurServices/Outdoor design icon.png";
 function services() {
   const services = [
-    { title: "Interior Design", desc: "Modern and aesthetic home interiors." },
-    { title: "Office Spaces", desc: "Functional and stylish workspaces." },
-    { title: "Custom Furniture", desc: "Tailor-made furniture for your needs." },
+    {
+      title: "Interior Design",
+      desc: "Modern and aesthetic home interiors.",
+      img: Image1,
+    },
+    {
+      title: "Office Spaces",
+      desc: "Functional and stylish workspaces.",
+      img: Image2,
+    },
+    {
+      title: "Custom Furniture",
+      desc: "Tailor-made furniture for your needs.",
+      img: Image3,
+    },
   ];
 
   return (
     <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold text-gray-900">Our Services</h2>
-        <p className="mt-2 text-gray-600">We offer complete solutions for your dream space.</p>
+      <div className="max-w-7xl mx-auto px-6 ">
+        <h2 className="text-4xl font-semibold font-1 text-[#1F1F1F] flex  items-center gap-3">
+          <div className="bg-[#1F1F1F] h-[3px] w-16"></div>Our Services
+        </h2>
+        <p className="mt-2 text-gray-600">
+          We offer complete solutions for your dream space.
+        </p>
         <div className="mt-10 grid md:grid-cols-3 gap-8">
           {services.map((service, i) => (
-            <div key={i} className="p-6 border rounded-xl shadow-sm hover:shadow-lg transition">
-              <h3 className="text-xl font-semibold text-gray-800">{service.title}</h3>
-              <p className="mt-3 text-gray-600">{service.desc}</p>
+            <div
+              key={i}
+              className="p-6 border rounded-xl shadow-sm hover:shadow-lg transition flex  gap-3"
+            >
+              <div ><img src={service?.img} className="h-14"/></div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-800">
+                  {service.title}
+                </h3>
+                <p className="mt-3 text-gray-600">{service.desc}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -26,4 +52,3 @@ function services() {
 }
 
 export default services;
-
