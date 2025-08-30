@@ -13,7 +13,7 @@ function Footer() {
   return (
     <section className="relative   ">
       {/* Input box overlapping footer */}
-      <section className="w-full  -top-10  flex justify-center items-center absolute">
+      <section className="w-full  -top-8  flex justify-center items-center absolute">
         <div className="flex items-center max-w-full p-1.5 md:w-xl bg-white shadow-md border border-gray-300 ">
           <FontAwesomeIcon
             icon={faEnvelope}
