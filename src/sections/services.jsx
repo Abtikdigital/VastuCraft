@@ -77,6 +77,7 @@ function Services() {
         <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, i) => (
             <FadeIn
+            
               key={i}
               direction={service.direction}
               delay={i * 0.2} // Reduced stagger delay for smoother experience
