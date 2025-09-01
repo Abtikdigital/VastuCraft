@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .primary-button {
-  @apply bg-[#1F1F1F] text-white font-semibold text-base  py-2.5 px-6 transition-all duration-300 hover:bg-gray-600 flex justify-center items-center cursor-pointer;
+  @apply bg-[#1F1F1F] text-white font-semibold hover:bg-[#F1F1F1] hover:text-[#464646] text-base  py-2.5 px-6 transition-all duration-300    flex justify-center items-center cursor-pointer;
 }
 
 .font-1 {

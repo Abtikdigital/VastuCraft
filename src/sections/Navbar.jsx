@@ -48,7 +48,7 @@ function Navbar() {
           ))}
         </ul>
         <div>
-          <button className="primary-button">Sign Up</button>
+          <button className=" text-white bg-[#1F1F1F] cursor-pointer  font-1  py-2.5 px-6 text-base font-semibold font-1 transition-all duration-300 hover:bg-[#F1F1F1] hover:text-[#464646]">Start Project</button>
         </div>
       </section>
 
@@ -90,7 +90,7 @@ function Navbar() {
               </Link>
             ))}
             <div className="w-full flex justify-center mt-5">
-              <button className="primary-button">Sign Up</button>
+              <button className="primary-button">Start  Project</button>
             </div>
           </ul>
         </div>

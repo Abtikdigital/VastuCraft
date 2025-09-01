@@ -2,9 +2,10 @@ import React from "react";
 import Navbar from "../sections/Navbar";
 import Footer from "../sections/Footer";
 import Hero from "../sections/Hero";
-import Service from "../sections/services";
+import Service from "../sections/Services";
 import Testimonial from "../sections/Testimonial";
 import Member1 from "../assets/Team/Member1.png";
+import Newsletter from "../sections/Newsletter";
 function About() {
   const testimonialData = [
     {
@@ -30,7 +31,7 @@ function About() {
       <Service />
       <Testimonial />
       <section className="p-6  md:p-10 lg:p-20 space-y-6">
-        <h2 className="text-3xl md:text-4xl font-semibold font-1 text-[#1F1F1F] flex  items-center gap-3">
+        <h2 className=" font-1  lg:text-5xl   font-1 leading-tight   text-3xl md:text-4xl font-semibold font-1 text-[#1F1F1F] flex  items-center gap-3">
           <div className="bg-[#1F1F1F] h-[3px] w-16"></div> Our Team{" "}
           <div className="w-24"></div>
         </h2>
@@ -52,7 +53,7 @@ function About() {
           ))}
         </section>
       </section>
-
+      <Newsletter />
       <Footer />
     </>
   );

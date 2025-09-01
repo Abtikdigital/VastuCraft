@@ -25,7 +25,7 @@ function Footer() {
             placeholder="Enter your email"
             className="flex-1 px-4 py-3 text-gray-700 outline-none border-none"
           />
-          <button className="bg-[#1F1F1F] cursor-pointer hover:bg-black transition text-white font-semibold px-6 py-3">
+          <button className="  py-2.5 px-6 text-base  font-1 bg-[#1F1F1F] transition-all duration-300  cursor-pointer hover:bg-[#F1F1F1] hover:text-[#1f1f1f]  text-white font-semibold ">
             Subscribe
           </button>
         </div>

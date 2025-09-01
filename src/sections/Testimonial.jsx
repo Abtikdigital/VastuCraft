@@ -1,120 +1,9 @@
-// import React, { useState } from "react";
-// import { ChevronLeft, ChevronRight } from "lucide-react";
-
-// function Testimonial() {
-//   const testimonials = [
-//     {
-//       name: "Sophie Carter",
-//       location: "New York, USA",
-//       text: "Working with your design team was an absolute pleasure. The attention to detail and creativity exceeded my expectations. Thank you for making my home beautiful!",
-//       image: "https://randomuser.me/api/portraits/women/65.jpg",
-//     },
-//     {
-//       name: "James Bennett",
-//       location: "Toronto, Canada",
-//       text: "Exceptional service! From the initial consultation to the final touches, your team delivered professionalism and a keen eye for design. Highly recommend!",
-//       image: "https://randomuser.me/api/portraits/men/44.jpg",
-//     },
-//     {
-//       name: "Aditi Sharma",
-//       location: "Mumbai, India",
-//       text: "Absolutely loved the interiors! They understood my vision perfectly and created something beyond expectations.",
-//       image: "https://randomuser.me/api/portraits/women/32.jpg",
-//     },
-//     {
-//       name: "Rahul Mehta",
-//       location: "Delhi, India",
-//       text: "Professional team and stunning results. My office looks fantastic!",
-//       image: "https://randomuser.me/api/portraits/men/36.jpg",
-//     },
-//   ];
-
-//   const [index, setIndex] = useState(0);
-
-//   const prevTestimonial = () => {
-//     setIndex(index === 0 ? testimonials.length - 2 : index - 1);
-//   };
-
-//   const nextTestimonial = () => {
-//     setIndex(index >= testimonials.length - 2 ? 0 : index + 1);
-//   };
-
-//   return (
-//     <section className="py-20 bg-white">
-//       <div className="max-w-7xl mx-auto px-6 relative">
-
-//         {/* Top: Image + Text */}
-//         <div className="grid md:grid-cols-2 gap-12 items-start">
-//           {/* Left Image */}
-//           <div className="relative">
-//             <img
-//               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
-//               alt="Interior Design"
-//               className="rounded-xl shadow-lg"
-//             />
-//           </div>
-
-//           {/* Right Text */}
-//           <div className="flex flex-col justify-center">
-//             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-//               What Our Customers <br /> Say About Us
-//             </h2>
-//             <p className="text-gray-600 text-lg">
-//               Real feedback from clients who experienced our design expertise.
-//               Their words inspire us to keep creating beautiful spaces.
-//             </p>
-//           </div>
-//         </div>
-
-//         {/* Testimonial Cards - Positioned between image and text */}
-//         <div className="mt-[-180px] flex justify-center gap-6 relative z-10">
-//           {testimonials.slice(index, index + 2).map((t, i) => (
-//             <div
-//               key={i}
-//               className="bg-black text-white p-8 rounded-xl shadow-xl max-w-sm w-full"
-//             >
-//               <p className="italic mb-6">“{t.text}”</p>
-//               <div className="flex items-center space-x-4">
-//                 <img
-//                   src={t.image}
-//                   alt={t.name}
-//                   className="w-12 h-12 rounded-full"
-//                 />
-//                 <div>
-//                   <h4 className="font-semibold">{t.name}</h4>
-//                   <p className="text-gray-400 text-sm">{t.location}</p>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* Carousel Arrows */}
-//         <div className="flex justify-center space-x-4 mt-6">
-//           <button
-//             onClick={prevTestimonial}
-//             className="p-3 bg-gray-200 rounded-full hover:bg-gray-300"
-//           >
-//             <ChevronLeft className="w-5 h-5" />
-//           </button>
-//           <button
-//             onClick={nextTestimonial}
-//             className="p-3 bg-gray-200 rounded-full hover:bg-gray-300"
-//           >
-//             <ChevronRight className="w-5 h-5" />
-//           </button>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-// export default Testimonial;
-import Image1 from "../assets/Testimonial/Image1.png";
 import { useState, useEffect, useRef } from "react";
-import ProfileImage1 from "../assets/Testimonial/ProfileImage1.png";
-import ProfileImage2 from "../assets/Testimonial/ProfileImage1.png";
-import ProfileImage3 from "../assets/Testimonial/ProfileImage1.png";
+import { motion, AnimatePresence } from "framer-motion";
+import Image1 from "../assets/Testimonial/Image1.png";
+import ProfileImage1 from "../assets/Testimonial/Image1.png";
+import ProfileImage2 from "../assets/Testimonial/Image1.png";
+import ProfileImage3 from "../assets/Testimonial/Image1.png";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -127,28 +16,28 @@ const Testimonial = () => {
     {
       message:
         "Your design team transformed my space with incredible creativity and precision. I'm thrilled with the results!",
-      profile: ProfileImage1,
+      profile: ProfileImage1 || "https://via.placeholder.com/64",
       name: "Sophie Carter",
       location: "New York, USA",
     },
     {
       message:
         "The professionalism and innovative designs from your team made my home renovation a breeze. Highly recommend!",
-      profile: ProfileImage2,
+      profile: ProfileImage2 || "https://via.placeholder.com/64",
       name: "James Lee",
       location: "San Francisco, USA",
     },
     {
       message:
         "An amazing experience! The attention to detail and unique style exceeded all my expectations.",
-      profile: ProfileImage3,
+      profile: ProfileImage3 || "https://via.placeholder.com/64",
       name: "Emma Brown",
       location: "London, UK",
     },
     {
       message:
         "An amazing experience! The attention to detail and unique style exceeded all my expectations.",
-      profile: ProfileImage3,
+      profile: ProfileImage3 || "https://via.placeholder.com/64",
       name: "Emma Brown",
       location: "London, UK",
     },
@@ -205,11 +94,45 @@ const Testimonial = () => {
     setIsPaused(false);
   };
 
+  // Animation variants for different directions with delay
+  const cardVariants = (index) => ({
+    hidden: {
+      opacity: 0,
+      x: index % 3 === 0 ? -100 : index % 3 === 1 ? 100 : 0,
+      y: index % 3 === 2 ? 100 : 0,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+        delay: (index % cardsPerSlide) * 0.2, // Staggered delay for each card
+      },
+    },
+    exit: {
+      opacity: 0,
+      x: index % 3 === 0 ? 100 : index % 3 === 1 ? -100 : 0,
+      y: index % 3 === 2 ? -100 : 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeIn",
+      },
+    },
+  });
+
   return (
     <>
       <section className="grid grid-cols-1 lg:grid-cols-2 p-6 md:p-20 gap-10 relative">
         <div className="space-y-6">
-          <img src={Image1} alt="Testimonial background" />
+          <img
+            src={Image1 || "https://via.placeholder.com/600x400"}
+            alt="Testimonial background"
+            onError={(e) => {
+              e.target.src = "https://via.placeholder.com/600x400";
+            }}
+          />
           <div className="flex gap-6">
             <button
               className="bg-[#F1F1F1] p-2 rounded-xs"
@@ -234,7 +157,7 @@ const Testimonial = () => {
           </div>
         </div>
         <div>
-          <h2 className="text-[#1F1F1F] font-1 font-semibold text-5xl">
+          <h2 className="text-[#1F1F1F] font-1 font-semibold text-3xl md:text-4xl lg:text-5xl">
             What Our Customers Say About Us
           </h2>
         </div>
@@ -245,43 +168,51 @@ const Testimonial = () => {
             onMouseLeave={handleMouseLeave}
           >
             <div className="overflow-hidden">
-              <div
-                className="flex gap-6 transition-transform duration-500 ease-in-out"
-                style={{
-                  transform: `translateX(-${
-                    currentIndex * (100 / cardsPerSlide)
-                  }%)`,
-                }}
-              >
-                {testmonialData.map((data, index) => (
-                  <div
-                    key={index}
-                    className={`flex-none w-[calc(100%-20px)] md:w-[calc(50%-24px)] min-h-96 bg-[#1F1F1F] p-6 md:p-6 space-y-6`}
-                  >
-                    <h2 className="text-white text-6xl font-semibold font-serif">
-                      “
-                    </h2>
-                    <p className="text-white text-lg">{data.message}</p>
-                    <section className="flex items-center gap-6">
-                      <div>
-                        <img
-                          src={data.profile}
-                          className="w-16 h-16 rounded-full object-cover"
-                          alt={`${data.name}'s profile`}
-                        />
-                      </div>
-                      <div>
-                        <h2 className="text-white font-bold text-xl">
-                          {data.name}
-                        </h2>
-                        <h3 className="text-[#929292] font-semibold">
-                          {data.location}
-                        </h3>
-                      </div>
-                    </section>
-                  </div>
-                ))}
-              </div>
+              <AnimatePresence>
+                <motion.div
+                  className="flex gap-6"
+                  style={{
+                    transform: `translateX(-${currentIndex * (100 / cardsPerSlide)}%)`,
+                  }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                >
+                  {testmonialData.map((data, index) => (
+                    <motion.div
+                      key={index}
+                      className={`flex-none w-[calc(100%-20px)] md:w-[calc(50%-24px)] min-h-96 bg-[#1F1F1F] p-6 md:p-6 space-y-6`}
+                      variants={cardVariants(index)}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      <h2 className="text-white text-6xl font-semibold font-serif">
+                        “
+                      </h2>
+                      <p className="text-white text-lg">{data.message}</p>
+                      <section className="flex items-center gap-6">
+                        <div>
+                          <img
+                            src={data.profile}
+                            className="w-16 h-16 rounded-full object-cover"
+                            alt={`${data.name}'s profile`}
+                            onError={(e) => {
+                              e.target.src = "https://via.placeholder.com/64";
+                            }}
+                          />
+                        </div>
+                        <div>
+                          <h2 className="text-white font-bold text-xl">
+                            {data.name}
+                          </h2>
+                          <h3 className="text-[#929292] font-semibold">
+                            {data.location}
+                          </h3>
+                        </div>
+                      </section>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </section>

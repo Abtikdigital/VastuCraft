@@ -1,13 +1,50 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import Image1 from "../assets/Hero/Image1.png";
 import Image2 from "../assets/Hero/Image2.png";
 
 function Hero() {
+  const [inView, setInView] = useState({ top: false, bottom: false });
+  const topRef = useRef(null);
+  const bottomRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === topRef.current && entry.isIntersecting) {
+            setInView((prev) => ({ ...prev, top: true }));
+          }
+          if (entry.target === bottomRef.current && entry.isIntersecting) {
+            setInView((prev) => ({ ...prev, bottom: true }));
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (topRef.current) observer.observe(topRef.current);
+    if (bottomRef.current) observer.observe(bottomRef.current);
+
+    return () => {
+      if (topRef.current) observer.unobserve(topRef.current);
+      if (bottomRef.current) observer.unobserve(bottomRef.current);
+    };
+  }, []);
+
   return (
-    <section className="p-6 md:p-10 lg:p-20 space-y-6">
+    <section className="p-6 md:p-10 lg:p-20 space-y-6 overflow-hidden">
       {/* Top Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-center gap-8">
-        <div className="space-y-6 md:space-y-12 col-span-2">
+      <div
+        ref={topRef}
+        className="grid grid-cols-1 md:grid-cols-3 justify-between items-center gap-8 overflow-hidden"
+      >
+        <motion.div
+          className="space-y-6 md:space-y-12 col-span-2"
+          initial={{ x: -100, opacity: 0 }}
+          animate={inView.top ? { x: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <h1 className="font-1 heading-1">Interior Design</h1>
           <p className="paragraph-1">
             Step into a world where the art of Interior Design is meticulously
@@ -15,18 +52,38 @@ function Hero() {
             Innovation, Allowing you to transform your living spaces into the
             epitome of luxury and sophistication
           </p>
-        </div>
-        <div className="flex justify-center md:justify-end">
-          <img src={Image1} className="h-60 md:h-72 object-contain" alt="Design" />
-        </div>
+        </motion.div>
+
+        <motion.div
+          className="flex justify-center md:justify-end"
+          initial={{ x: 100, opacity: 0 }}
+          animate={inView.top ? { x: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <img
+            src={Image1}
+            className="h-60 md:h-72 object-contain"
+            alt="Design"
+          />
+        </motion.div>
       </div>
 
       {/* Bottom Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+      <div
+        ref={bottomRef}
+        className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 overflow-hidden"
+      >
         {/* Left - Button + Stats */}
-        <div className="space-y-6">
+        <motion.div
+          className="space-y-6"
+          initial={{ y: 100, opacity: 0 }}
+          animate={inView.bottom ? { y: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <div>
-            <button className="primary-button !w-fit">Start A Project</button>
+            <button className="primary-button !w-fit  text-[#1F1F1F] py-2.5 px-6 text-base font-semibold font-1">
+              Start A Project
+            </button>
           </div>
 
           {/* Stats - Responsive */}
@@ -52,12 +109,21 @@ function Hero() {
               </li>
             </ul>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right - Image */}
-        <div className="flex justify-center md:justify-end">
-          <img src={Image2} className="h-60 md:h-72 object-contain" alt="Interior" />
-        </div>
+        <motion.div
+          className="flex justify-center md:justify-end"
+          initial={{ x: 100, opacity: 0 }}
+          animate={inView.bottom ? { x: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <img
+            src={Image2}
+            className="h-60 md:h-72 object-contain"
+            alt="Interior"
+          />
+        </motion.div>
       </div>
     </section>
   );

@@ -6,7 +6,7 @@ function Newsletter() {
   return (
     <section className="relative bg-white py-16 px-6 text-center">
       {/* Heading */}
-      <h2 className="text-[#1F1F1F] font-1 font-semibold text-5xl mb-3">
+      <h2 className="text-[#1F1F1F] font-1 font-semibold text-5xl mb-3  font-1  md:text-4xl lg:text-5xl   font-1 leading-tight">
         Subscribe to Our Newsletter for Design Insights
       </h2>
 
