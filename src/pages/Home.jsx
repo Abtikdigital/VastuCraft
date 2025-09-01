@@ -16,6 +16,7 @@ function Home() {
       <Services />
       <Steps />
       <FeaturedDesign />
+      
       <Testimonial />
       <Newsletter />
       <Footer />
