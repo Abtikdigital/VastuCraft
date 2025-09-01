@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../sections/Navbar";
 import Footer from "../sections/Footer";
 import Hero from "../sections/Hero";
-import Service from "../sections/Services";
+import Service from "../sections/Servicesection";
 import Testimonial from "../sections/Testimonial";
 import Member1 from "../assets/Team/Member1.png";
 import Newsletter from "../sections/Newsletter";
