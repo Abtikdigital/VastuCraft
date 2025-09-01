@@ -32,11 +32,10 @@ function services() {
         </p>
         <div className="mt-10 grid md:grid-cols-3 gap-8">
           {services.map((service, i) => (
-            <div
-              key={i}
-              className="p-6   transition flex  gap-3"
-            >
-              <div ><img src={service?.img} className="h-14"/></div>
+            <div key={i} className="p-6   transition flex  gap-3">
+              <div>
+                <img src={service?.img} className="h-14" />
+              </div>
               <div>
                 <h3 className="text-xl font-semibold text-gray-800">
                   {service.title}
