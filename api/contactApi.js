@@ -75,7 +75,7 @@ const sendMail = async (from, to, subject, template) => {
 
 // firm Template (For Admin)
 const firmTemplate = (data) => {
-  let { name, email, number, message } = data;
+  let { name, email, phone, message } = data;
 
   return `
     <!DOCTYPE html>
