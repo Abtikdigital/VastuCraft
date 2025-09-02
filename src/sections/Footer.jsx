@@ -1,6 +1,6 @@
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo/Logo1.png";
 import {
@@ -14,6 +14,8 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 function Footer() {
+  const [loading, setLoading] = useState(false); // 🔹 Loader state
+
   // React Hook Form
   const {
     register,
@@ -24,6 +26,9 @@ function Footer() {
 
   // Submit handler
   const onSubmit = async (data) => {
+    if (loading) return; // 🔹 Prevent double submit
+    setLoading(true);
+
     try {
       const res = await axios.post("/api/emailSubscribingApi.js", data);
 
@@ -41,6 +46,8 @@ function Footer() {
         title: "Subscription Failed",
         text: "Something went wrong, please try again later.",
       });
+    } finally {
+      setLoading(false); // 🔹 Reset loader
     }
   };
 
@@ -68,12 +75,16 @@ function Footer() {
               },
             })}
             className="flex-1 px-4 py-3 text-gray-700 outline-none border-none"
+            disabled={loading} // 🔹 Disable input while submitting
           />
           <button
             type="submit"
-            className="py-2.5 px-6 text-base font-1 bg-[#1F1F1F] transition-all duration-300 cursor-pointer hover:bg-[#F1F1F1] hover:text-[#1f1f1f] text-white font-semibold"
+            disabled={loading} // 🔹 Prevent click while loading
+            className={`py-2.5 px-6 text-base font-1 transition-all duration-300 font-semibold 
+              ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-[#1F1F1F] hover:bg-[#F1F1F1] hover:text-[#1f1f1f] text-white"}
+            `}
           >
-            Subscribe
+            {loading ? "Submitting..." : "Subscribe"}
           </button>
         </form>
       </section>

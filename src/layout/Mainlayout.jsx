@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../sections/Navbar";
 import Footer from "../sections/Footer";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,6 +11,8 @@ function Mainlayout(props) {
   const { isOpen } = useSelector((state) => state);
   const dispatch = useDispatch();
 
+  const [loading, setLoading] = useState(false); // 🔹 Loader state
+
   const {
     register,
     handleSubmit,
@@ -19,6 +21,9 @@ function Mainlayout(props) {
   } = useForm();
 
   const onSubmit = async (data) => {
+    if (loading) return; // 🔹 Prevent double submit
+    setLoading(true);
+
     try {
       const res = await axios.post("/api/inquiryApi.js", data);
 
@@ -37,6 +42,8 @@ function Mainlayout(props) {
         title: "Submission Failed",
         text: "Something went wrong, please try again later!",
       });
+    } finally {
+      setLoading(false); // 🔹 Reset loader
     }
   };
 
@@ -53,9 +60,12 @@ function Mainlayout(props) {
             {/* X Close Button */}
             <button
               onClick={() => dispatch({ type: "close" })}
-              className="absolute top-5 right-3 cursor-pointer text-gray-600 hover:text-black text-xl font-bold border p-1"
+              disabled={loading} // 🔹 Prevent close click while submitting
+              className={`absolute top-5 right-3 cursor-pointer text-gray-600 hover:text-black text-xl font-bold border p-1 ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             >
-              <X/>
+              <X />
             </button>
 
             <h2 className="text-2xl font-semibold text-center mb-6">
@@ -69,6 +79,7 @@ function Mainlayout(props) {
                   placeholder="Enter Your Name"
                   {...register("name", { required: "* Name is required" })}
                   className="w-full border p-3 outline-none font-medium text-gray-700"
+                  disabled={loading}
                 />
                 {errors.name && (
                   <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -84,6 +95,7 @@ function Mainlayout(props) {
                     minLength: { value: 10, message: "Must be at least 10 digits" },
                   })}
                   className="w-full border p-3 outline-none font-medium text-gray-700"
+                  disabled={loading}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm">{errors.phone.message}</p>
@@ -102,6 +114,7 @@ function Mainlayout(props) {
                     },
                   })}
                   className="w-full border p-3 outline-none font-medium text-gray-700"
+                  disabled={loading}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -114,6 +127,7 @@ function Mainlayout(props) {
                   rows="4"
                   {...register("message")}
                   className="w-full border p-3 outline-none font-medium text-gray-700"
+                  disabled={loading}
                 />
                 {errors.message && (
                   <p className="text-red-500 text-sm">
@@ -124,9 +138,14 @@ function Mainlayout(props) {
 
               <button
                 type="submit"
-                className="w-full bg-black text-white py-3 font-semibold cursor-pointer hover:bg-gray-800 transition"
+                disabled={loading}
+                className={`w-full py-3 font-semibold transition ${
+                  loading
+                    ? "bg-gray-400 cursor-not-allowed text-white"
+                    : "bg-black text-white hover:bg-gray-800 cursor-pointer"
+                }`}
               >
-                Submit Inquiry
+                {loading ? "Submitting..." : "Submit Inquiry"}
               </button>
             </form>
           </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../sections/Navbar";
 import Footer from "../sections/Footer";
 import Hero from "../sections/Hero";
@@ -10,6 +10,8 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 function Contact() {
+  const [loading, setLoading] = useState(false); // 🔹 Loader state
+
   const {
     register,
     handleSubmit,
@@ -18,6 +20,9 @@ function Contact() {
   } = useForm();
 
   const onSubmit = async (data) => {
+    if (loading) return; // prevent double submit
+    setLoading(true);
+
     try {
       const res = await axios.post("/api/contactApi.js", data);
 
@@ -35,6 +40,8 @@ function Contact() {
         title: "Submission Failed",
         text: "Something went wrong, please try again later!",
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,13 +58,14 @@ function Contact() {
               Contact Us
             </h2>
 
-            {/* Form with validation + axios + sweetalert */}
+            {/* Form with validation + axios + sweetalert + loader */}
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
                 <input
                   className="bg-white text-[#939292] font-medium p-2 px-3 w-full outline-none font-1"
                   placeholder="Enter Your Name"
                   {...register("name", { required: "* Name is required" })}
+                  disabled={loading}
                 />
                 {errors.name && (
                   <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -71,6 +79,7 @@ function Contact() {
                     required: "* Phone number is required",
                     minLength: { value: 10, message: "Must be at least 10 digits" },
                   })}
+                  disabled={loading}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm">{errors.phone.message}</p>
@@ -87,6 +96,7 @@ function Contact() {
                       message: "Invalid email address",
                     },
                   })}
+                  disabled={loading}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -98,6 +108,7 @@ function Contact() {
                   placeholder="Enter Your Message"
                   rows={4}
                   {...register("message")}
+                  disabled={loading}
                 />
                 {errors.message && (
                   <p className="text-red-500 text-sm">{errors.message.message}</p>
@@ -106,9 +117,14 @@ function Contact() {
               <div>
                 <button
                   type="submit"
-                  className="bg-white text-[#1F1F1F] py-2.5 px-6 text-base font-semibold font-1"
+                  disabled={loading}
+                  className={`py-2.5 px-6 text-base font-semibold font-1 transition ${
+                    loading
+                      ? "bg-gray-400 text-white cursor-not-allowed"
+                      : "bg-white text-[#1F1F1F] hover:bg-gray-200"
+                  }`}
                 >
-                  Submit
+                  {loading ? "Submitting..." : "Submit"}
                 </button>
               </div>
             </form>
