@@ -20,7 +20,7 @@ function Mainlayout(props) {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/inquiry", data);
+      const res = await axios.post("/api/inquiryApi.js", data);
 
       if (res.status === 200) {
         Swal.fire({
