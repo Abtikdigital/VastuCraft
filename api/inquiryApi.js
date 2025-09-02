@@ -33,9 +33,9 @@ const inquirySchema = mongoose.Schema(
       lowercase: true,
       trim: true,
     },
-    number: { type: Number, required: [true, "* Number is required"] },
-    subject: { type: String, required: [true, "* Subject is required"] },
-    message: { type: String, required: [true, "* Message is required"] },
+    phone: { type: Number, required: [true, "* Number is required"] },
+
+    message: { type: String },
   },
   { timestamps: true }
 );
@@ -46,10 +46,13 @@ const InquiryModel =
 // VALIDATION SCHEMA
 const inquiryValidationSchema = joi.object({
   name: joi.string().required(),
-  number: joi.number().required(),
-  email: joi.string().email({ tlds: { allow: false } }).required(),
-  subject: joi.string().required(),
-  message: joi.string().required(),
+  phone: joi.number().required(),
+  email: joi
+    .string()
+    .email({ tlds: { allow: false } })
+    .required(),
+
+  message: joi.string(),
 });
 
 // NODEMAILER TRANSPORTER
@@ -64,7 +67,12 @@ const transporter = nodemailer.createTransport({
 // SEND MAIL
 const sendMail = async (from, to, subject, template) => {
   try {
-    let info = await transporter.sendMail({ from, to, subject, html: template });
+    let info = await transporter.sendMail({
+      from,
+      to,
+      subject,
+      html: template,
+    });
     if (info) console.log("Inquiry Mail Sent ✅");
   } catch (error) {
     console.log("Error Sending Inquiry Mail ❌", error);
@@ -73,7 +81,7 @@ const sendMail = async (from, to, subject, template) => {
 
 // FIRM TEMPLATE (to Admin)
 const firmTemplate = (data) => {
-  let { name, email, number, subject, message } = data;
+  let { name, email, phone, subject, message } = data;
 
   return `
   <!DOCTYPE html>
@@ -88,8 +96,8 @@ const firmTemplate = (data) => {
           <table width="100%" cellspacing="0" cellpadding="8" style="margin-top:15px;border-collapse:collapse;">
             <tr><th align="left" style="width:30%;background:#1f1f1f;color:#fff;">Name</th><td>${name}</td></tr>
             <tr><th align="left" style="background:#1f1f1f;color:#fff;">Email</th><td><a href="mailto:${email}">${email}</a></td></tr>
-            <tr><th align="left" style="background:#1f1f1f;color:#fff;">Contact</th><td><a href="tel:+91${number}">${number}</a></td></tr>
-            <tr><th align="left" style="background:#1f1f1f;color:#fff;">Subject</th><td>${subject}</td></tr>
+            <tr><th align="left" style="background:#1f1f1f;color:#fff;">Contact</th><td><a href="tel:+91${phone}">${phone}</a></td></tr>
+
             <tr><th align="left" style="background:#1f1f1f;color:#fff;">Message</th><td>${message}</td></tr>
           </table>
         </div>
@@ -104,7 +112,7 @@ const firmTemplate = (data) => {
 
 // USER TEMPLATE (Auto-reply)
 const userTemplate = (data) => {
-  let { name, subject } = data;
+  let { name,  } = data;
   return `
   <!DOCTYPE html>
   <html>
@@ -115,7 +123,7 @@ const userTemplate = (data) => {
         </div>
         <div style="padding:30px;">
           <h2 style="color:#333;">✅ Inquiry Received</h2>
-          <p style="color:#555;">Dear ${name}, thank you for your inquiry regarding <b>${subject}</b>.</p>
+          <p style="color:#555;">Dear ${name}, thank you for your inquiry .
           <p>Our team will get back to you shortly.</p>
           <center>
             <a href="https://www.vastucraft.com" style="display:inline-block;background:#1f1f1f;color:#fff;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:600;">Visit Our Website</a>
@@ -133,16 +141,26 @@ const userTemplate = (data) => {
 // MAIN HANDLER
 const handler = async (req, res) => {
   if (req.method !== "POST") {
-    return res.status(405).json({ isSuccess: false, message: "Only POST method allowed" });
+    return res
+      .status(405)
+      .json({ isSuccess: false, message: "Only POST method allowed" });
   }
   try {
     await dbConnection();
 
-    let { name, number, email, subject, message } = req.body;
-    let { error } = inquiryValidationSchema.validate({ name, number, email, subject, message });
+    let { name, phone, email,  message } = req.body;
+    let { error } = inquiryValidationSchema.validate({
+      name,
+      phone,
+      email,
+     
+      message,
+    });
 
     if (error) {
-      return res.status(400).json({ isSuccess: false, message: "Validation Error", error });
+      return res
+        .status(400)
+        .json({ isSuccess: false, message: "Validation Error", error });
     }
 
     // Save to DB
@@ -151,17 +169,33 @@ const handler = async (req, res) => {
 
     if (saved) {
       await Promise.all([
-        sendMail(GMAIL_USER, email, "Thanks for your Inquiry", userTemplate(req.body)),
-        sendMail(GMAIL_USER, GMAIL_USER, `New Inquiry from ${name}`, firmTemplate(req.body)),
+        sendMail(
+          GMAIL_USER,
+          email,
+          "Thanks for your Inquiry",
+          userTemplate(req.body)
+        ),
+        sendMail(
+          GMAIL_USER,
+          GMAIL_USER,
+          `New Inquiry from ${name}`,
+          firmTemplate(req.body)
+        ),
       ]);
 
-      return res.status(201).json({ isSuccess: true, message: "Inquiry Submitted Successfully" });
+      return res
+        .status(201)
+        .json({ isSuccess: true, message: "Inquiry Submitted Successfully" });
     } else {
-      return res.status(400).json({ isSuccess: false, message: "Error Saving Inquiry" });
+      return res
+        .status(400)
+        .json({ isSuccess: false, message: "Error Saving Inquiry" });
     }
   } catch (error) {
     console.log("Inquiry API Error:", error);
-    return res.status(500).json({ isSuccess: false, message: "Internal Server Error" });
+    return res
+      .status(500)
+      .json({ isSuccess: false, message: "Internal Server Error" });
   }
 };
 
