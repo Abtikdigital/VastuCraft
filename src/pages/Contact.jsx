@@ -8,9 +8,11 @@ import Mainlayout from "../layout/Mainlayout";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 function Contact() {
-  const [loading, setLoading] = useState(false); // 🔹 Loader state
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -19,8 +21,13 @@ function Contact() {
     reset
   } = useForm();
 
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
   const onSubmit = async (data) => {
-    if (loading) return; // prevent double submit
+    if (loading) return;
     setLoading(true);
 
     try {
@@ -45,20 +52,39 @@ function Contact() {
     }
   };
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <Mainlayout>
       <Hero />
-      <section className="p-6 md:p-10 lg:p-20">
+      <motion.section
+        ref={ref}
+        variants={fadeUp}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="p-6 md:p-10 lg:p-20"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 bg-[#1F1F1F] p-6 md:p-10">
-          <div>
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <img src={Image1} className="h-full w-full" alt="Contact" />
-          </div>
-          <div className="space-y-6">
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-6"
+          >
             <h2 className="text-white font-semibold text-5xl font-1 md:text-4xl lg:text-5xl leading-tight">
               Contact Us
             </h2>
 
-            {/* Form with validation + axios + sweetalert + loader */}
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
                 <input
@@ -118,19 +144,22 @@ function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`py-2.5 px-6 text-base font-semibold font-1 transition ${
+                  className={`flex items-center justify-center gap-2 py-2.5 px-6 text-base font-semibold font-1 transition ${
                     loading
                       ? "bg-gray-400 text-white cursor-not-allowed"
                       : "bg-white text-[#1F1F1F] hover:bg-gray-200"
                   }`}
                 >
+                  {loading && (
+                    <span className="w-4 h-4 border-2 border-t-transparent border-[#1F1F1F] rounded-full animate-spin"></span>
+                  )}
                   {loading ? "Submitting..." : "Submit"}
                 </button>
               </div>
             </form>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
       <Newsletter />
     </Mainlayout>
   );
