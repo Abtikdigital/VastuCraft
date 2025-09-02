@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image1 from "../assets/Hero/Image1.png";
 import Image2 from "../assets/Hero/Image2.png";
+import { useDispatch } from "react-redux";
 
 function Hero() {
   const [inView, setInView] = useState({ top: false, bottom: false });
   const topRef = useRef(null);
   const bottomRef = useRef(null);
+  const dispatch=useDispatch()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -81,7 +83,9 @@ function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div>
-            <button className="primary-button !w-fit  text-[#1F1F1F] py-2.5 px-6 text-base font-semibold font-1">
+            <button className="primary-button !w-fit  text-[#1F1F1F] py-2.5 px-6 text-base font-semibold font-1" onClick={()=>{
+              dispatch({type:"open"})
+            }}>
               Start A Project
             </button>
           </div>

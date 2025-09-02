@@ -7,6 +7,7 @@ import Hero from "../sections/Hero";
 import Image1 from "../assets/Services/Image1.png";
 import Image2 from "../assets/Services/Image1.png";
 import Image3 from "../assets/Services/Image1.png";
+import Mainlayout from "../layout/Mainlayout";
 function Services() {
   const servicesData = [
     {
@@ -26,8 +27,8 @@ function Services() {
     },
   ];
   return (
-    <>
-      <Navbar />
+    <Mainlayout>
+   
       <Hero />
       <section className="p-6 md:p-10 lg:p-20  space-y-6">
         <h2 className=" flex gap-3 font-1 font-semibold text-3xl md:text-4xl lg:text-5xl items-center  text-[#1F1F1F] font-1">
@@ -46,8 +47,8 @@ function Services() {
       </section>
       <FeatureDesign />
       <Testimonial />
-      <Footer />
-    </>
+    
+    </Mainlayout>
   );
 }
 

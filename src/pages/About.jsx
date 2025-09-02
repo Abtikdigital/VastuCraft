@@ -6,6 +6,7 @@ import Service from "../sections/Servicesection";
 import Testimonial from "../sections/Testimonial";
 import Member1 from "../assets/Team/Member1.png";
 import Newsletter from "../sections/Newsletter";
+import Mainlayout from "../layout/Mainlayout";
 function About() {
   const testimonialData = [
     {
@@ -25,8 +26,8 @@ function About() {
     },
   ];
   return (
-    <>
-      <Navbar />
+    <Mainlayout>
+ 
       <Hero />
       <Service />
       <Testimonial />
@@ -54,8 +55,8 @@ function About() {
         </section>
       </section>
       <Newsletter />
-      <Footer />
-    </>
+    
+    </Mainlayout>
   );
 }
 

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Logo from "../assets/logo/Logo1.png";
 import { Link, useLocation } from "react-router-dom";
-import { X, Menu } from "lucide-react";
+import { X, Menu, PhoneCall, Phone } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
   const { pathname } = useLocation();
@@ -48,7 +50,10 @@ function Navbar() {
           ))}
         </ul>
         <div>
-          <button className=" text-white bg-[#1F1F1F] cursor-pointer  font-1  py-2.5 px-6 text-base font-semibold font-1 transition-all duration-300 hover:bg-[#F1F1F1] hover:text-[#464646]">Start Project</button>
+          <a className="  justify-center inline-flex text-[#1f1f1f] gap-3 items-center  cursor-pointer   text-base font-semibold font-1 transition-all duration-300 ">
+         
+          <FontAwesomeIcon icon={faPhone} fontSize={22} className="bg-[#313131] text-white p-1 py-1.5 "/> +91 96 5261 236
+          </a>
         </div>
       </section>
 
@@ -90,7 +95,7 @@ function Navbar() {
               </Link>
             ))}
             <div className="w-full flex justify-center mt-5">
-              <button className="primary-button">Start  Project</button>
+              <button className="primary-button">96 5261 236</button>
             </div>
           </ul>
         </div>

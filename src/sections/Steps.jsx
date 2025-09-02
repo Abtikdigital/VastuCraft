@@ -1,10 +1,18 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import Image1 from "../assets/Steps/Image1.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function Steps() {
   const [openFaqIndex, setOpenFaqIndex] = useState(-1);
+
+  // Intersection Observer hook to detect when container is in view
+  const { ref, inView } = useInView({
+    triggerOnce: true, // animate only once
+    threshold: 0.3, // 30% of element visible to trigger
+  });
 
   const faqs = [
     {
@@ -28,8 +36,24 @@ function Steps() {
     setOpenFaqIndex(openFaqIndex === index ? -1 : index);
   };
 
+  // Animation variants for fade and slide up
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section className="p-8 md:p-14 bg-gray-50 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+    <motion.section
+      className="p-8 md:p-14 bg-gray-50 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12"
+      ref={ref}
+      variants={containerVariants}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+    >
       {/* Left Image */}
       <div>
         <div className="flex justify-center items-center">
@@ -92,7 +116,7 @@ function Steps() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

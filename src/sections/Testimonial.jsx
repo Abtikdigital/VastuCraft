@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer"; // Import useInView
 import Image1 from "../assets/Testimonial/Image1.png";
 import ProfileImage1 from "../assets/Testimonial/Image1.png";
 import ProfileImage2 from "../assets/Testimonial/Image1.png";
@@ -11,6 +12,12 @@ const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef(null);
+
+  // Intersection Observer Hook
+  const { ref, inView } = useInView({
+    triggerOnce: false, // Trigger every time the section enters the viewport
+    threshold: 0.3, // Trigger when 30% of the section is visible
+  });
 
   const testmonialData = [
     {
@@ -123,101 +130,99 @@ const Testimonial = () => {
   });
 
   return (
-    <>
-      <section className="grid grid-cols-1 lg:grid-cols-2 p-6 md:p-20 gap-10 relative">
-        <div className="space-y-6">
-          <img
-            src={Image1 || "https://via.placeholder.com/600x400"}
-            alt="Testimonial background"
-            onError={(e) => {
-              e.target.src = "https://via.placeholder.com/600x400";
-            }}
-          />
-          <div className="flex gap-6">
-            <button
-              className="bg-[#F1F1F1] p-2 rounded-xs"
-              onClick={handlePrev}
-            >
-              <FontAwesomeIcon
-                icon={faArrowLeft}
-                fontSize={25}
-                className="text-[#464646]"
-              />
-            </button>
-            <button
-              className="bg-[#F1F1F1] p-2 rounded-xs"
-              onClick={handleNext}
-            >
-              <FontAwesomeIcon
-                icon={faArrowRight}
-                fontSize={25}
-                className="text-[#464646]"
-              />
-            </button>
-          </div>
-        </div>
-        <div>
-          <h2 className="text-[#1F1F1F] font-1 font-semibold text-3xl md:text-4xl lg:text-5xl">
-            What Our Customers Say About Us
-          </h2>
-        </div>
-        <section className="md:top-[30%] md:left-[30%] lg:absolute w-full lg:w-auto">
-          <div
-            className="relative lg:p-6 bg-white md:max-w-4xl md:mx-auto rounded-lg"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+    <section className="grid grid-cols-1 lg:grid-cols-2 p-6 md:p-20 gap-10 relative" ref={ref}>
+      <div className="space-y-6">
+        <img
+          src={Image1 || "https://via.placeholder.com/600x400"}
+          alt="Testimonial background"
+          onError={(e) => {
+            e.target.src = "https://via.placeholder.com/600x400";
+          }}
+        />
+        <div className="flex gap-6">
+          <button
+            className="bg-[#F1F1F1] p-2 rounded-xs"
+            onClick={handlePrev}
           >
-            <div className="overflow-hidden">
-              <AnimatePresence>
-                <motion.div
-                  className="flex gap-6"
-                  style={{
-                    transform: `translateX(-${currentIndex * (100 / cardsPerSlide)}%)`,
-                  }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                >
-                  {testmonialData.map((data, index) => (
-                    <motion.div
-                      key={index}
-                      className={`flex-none w-[calc(100%-20px)] md:w-[calc(50%-24px)] min-h-96 bg-[#1F1F1F] p-6 md:p-6 space-y-6`}
-                      variants={cardVariants(index)}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      <h2 className="text-white text-6xl font-semibold font-serif">
-                        “
-                      </h2>
-                      <p className="text-white text-lg">{data.message}</p>
-                      <section className="flex items-center gap-6">
-                        <div>
-                          <img
-                            src={data.profile}
-                            className="w-16 h-16 rounded-full object-cover"
-                            alt={`${data.name}'s profile`}
-                            onError={(e) => {
-                              e.target.src = "https://via.placeholder.com/64";
-                            }}
-                          />
-                        </div>
-                        <div>
-                          <h2 className="text-white font-bold text-xl">
-                            {data.name}
-                          </h2>
-                          <h3 className="text-[#929292] font-semibold">
-                            {data.location}
-                          </h3>
-                        </div>
-                      </section>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </AnimatePresence>
-            </div>
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              fontSize={25}
+              className="text-[#464646]"
+            />
+          </button>
+          <button
+            className="bg-[#F1F1F1] p-2 rounded-xs"
+            onClick={handleNext}
+          >
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              fontSize={25}
+              className="text-[#464646]"
+            />
+          </button>
+        </div>
+      </div>
+      <div>
+        <h2 className="text-[#1F1F1F] font-1 font-semibold text-3xl md:text-4xl lg:text-5xl">
+          What Our Customers Say About Us
+        </h2>
+      </div>
+      <section className="md:top-[30%] md:left-[30%] lg:absolute w-full lg:w-auto">
+        <div
+          className="relative lg:p-6 bg-white md:max-w-4xl md:mx-auto rounded-lg"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="overflow-hidden">
+            <AnimatePresence>
+              <motion.div
+                className="flex gap-6"
+                style={{
+                  transform: `translateX(-${currentIndex * (100 / cardsPerSlide)}%)`,
+                }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                {testmonialData.map((data, index) => (
+                  <motion.div
+                    key={index}
+                    className={`flex-none w-[calc(100%-20px)] md:w-[calc(50%-24px)] min-h-96 bg-[#1F1F1F] p-6 md:p-6 space-y-6`}
+                    variants={cardVariants(index)}
+                    initial="hidden"
+                    animate={inView ? "visible" : "hidden"} // Animate only when in view
+                    exit="exit"
+                  >
+                    <h2 className="text-white text-6xl font-semibold font-serif">
+                      “
+                    </h2>
+                    <p className="text-white text-lg">{data.message}</p>
+                    <section className="flex items-center gap-6">
+                      <div>
+                        <img
+                          src={data.profile}
+                          className="w-16 h-16 rounded-full object-cover"
+                          alt={`${data.name}'s profile`}
+                          onError={(e) => {
+                            e.target.src = "https://via.placeholder.com/64";
+                          }}
+                        />
+                      </div>
+                      <div>
+                        <h2 className="text-white font-bold text-xl">
+                          {data.name}
+                        </h2>
+                        <h3 className="text-[#929292] font-semibold">
+                          {data.location}
+                        </h3>
+                      </div>
+                    </section>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </section>
+        </div>
       </section>
-    </>
+    </section>
   );
 };
 

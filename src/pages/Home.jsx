@@ -1,17 +1,16 @@
-import React from 'react'
-import Navbar from '../sections/Navbar'
-import Footer from '../sections/Footer'
+
 import Hero from '../sections/Hero'
 import Services from '../sections/Servicesection'
 import Steps from '../sections/Steps'
 import FeaturedDesign from '../sections/FeaturedDesign'
 import Testimonial from '../sections/Testimonial'
 import Newsletter from '../sections/Newsletter'
+import Mainlayout from '../layout/Mainlayout'
 
 function Home() {
   return (
-    <>
-      <Navbar />
+    <Mainlayout>
+  
       <Hero />
       <Services />
       <Steps />
@@ -19,8 +18,8 @@ function Home() {
       
       <Testimonial />
       <Newsletter />
-      <Footer />
-    </>
+     
+    </Mainlayout>
   )
 }
 
