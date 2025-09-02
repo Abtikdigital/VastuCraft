@@ -151,7 +151,7 @@ const handler = async (req, res) => {
     let { name, phone, email,  message } = req.body;
     let { error } = inquiryValidationSchema.validate({
       name,
-      phone:Number(phone),
+      phone,
       email,
      
       message,
