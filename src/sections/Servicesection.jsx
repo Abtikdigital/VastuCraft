@@ -12,40 +12,32 @@ function Servicesection() {
       title: "Interior Design",
       desc: "Achieve the perfect balance of ambient, task, and accent lighting for a functional atmosphere",
       img: Image1,
-      direction: "left", // first: left → right
     },
     {
       title: "Office Spaces",
       desc: "Achieve the perfect balance of ambient, task, and accent lighting for a functional atmosphere",
       img: Image2,
-      direction: "up", // second: bottom → up
     },
     {
       title: "Custom Furniture",
       desc: "Achieve the perfect balance of ambient, task, and accent lighting for a functional atmosphere",
       img: Image3,
-      direction: "right", // third: right → left
     },
   ];
 
-  // Reusable animation wrapper
-  const FadeIn = ({ children, direction = "up", delay = 0 }) => {
+  // Reusable FadeIn animation (no directional movement)
+  const FadeIn = ({ children, delay = 0 }) => {
     const { ref, inView } = useInView({
-      triggerOnce: false, // replay on scroll up/down
-      threshold: window.innerWidth < 768 ? 0.1 : 0.2, // Lower threshold for small screens
+      triggerOnce: false,
+      threshold: window.innerWidth < 768 ? 0.1 : 0.2,
     });
 
     const variants = {
-      hidden: {
-        opacity: 0,
-        x: direction === "left" ? -20 : direction === "right" ? 20 : 0, // Reduced translation
-        y: direction === "up" ? 20 : direction === "down" ? -20 : 0, // Reduced translation
-      },
+      hidden: { opacity: 0, y: 20 }, // subtle bottom → up fade
       visible: {
         opacity: 1,
-        x: 0,
         y: 0,
-        transition: { duration: 0.6, delay, ease: "easeOut" }, // Smoother transition
+        transition: { duration: 0.6, delay, ease: "easeOut" },
       },
     };
 
@@ -55,7 +47,6 @@ function Servicesection() {
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         variants={variants}
-        style={{ overflow: "hidden" }} // Prevent overflow in animation
       >
         {children}
       </motion.div>
@@ -76,12 +67,7 @@ function Servicesection() {
         {/* Services Grid */}
         <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, i) => (
-            <FadeIn
-
-              key={i}
-              direction={service.direction}
-              delay={i * 0.2} // Reduced stagger delay for smoother experience
-            >
+            <FadeIn key={i} delay={i * 0.2}>
               <div className="p-4 sm:p-6 flex gap-3 bg-white shadow-md rounded-lg hover:shadow-lg transition duration-300">
                 <div>
                   <img
