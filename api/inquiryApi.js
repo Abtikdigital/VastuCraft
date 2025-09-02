@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import joi from "joi";
+import joi, { number } from "joi";
 import nodemailer from "nodemailer";
 
 // ENV VARIABLES
@@ -151,7 +151,7 @@ const handler = async (req, res) => {
     let { name, phone, email,  message } = req.body;
     let { error } = inquiryValidationSchema.validate({
       name,
-      phone,
+      phone:Number(phone),
       email,
      
       message,
