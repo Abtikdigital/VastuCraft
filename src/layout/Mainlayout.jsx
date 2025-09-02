@@ -22,7 +22,7 @@ function Mainlayout(props) {
     try {
       const res = await axios.post("/api/inquiryApi.js", data);
 
-      if (res.status === 200) {
+      if (res.status === 201) {
         Swal.fire({
           icon: "success",
           title: "Inquiry Submitted",

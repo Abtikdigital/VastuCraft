@@ -112,7 +112,7 @@ const firmTemplate = (data) => {
 
 // USER TEMPLATE (Auto-reply)
 const userTemplate = (data) => {
-  let { name,  } = data;
+  let { name  } = data;
   return `
   <!DOCTYPE html>
   <html>
