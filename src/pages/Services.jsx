@@ -8,7 +8,9 @@ import Image1 from "../assets/Services/Image1.png";
 import Image2 from "../assets/Services/Image1.png";
 import Image3 from "../assets/Services/Image1.png";
 import Mainlayout from "../layout/Mainlayout";
+import { useDispatch } from "react-redux";
 function Services() {
+  const disp=useDispatch()
   const servicesData = [
     {
       img: Image1,
@@ -40,7 +42,9 @@ function Services() {
               <div><img src={data?.img}/></div>
               <h2 className="text-white font-semibold font-1">{data?.title}</h2>
               <p className="text-[#939292]  font-1 font-medium min-h-12">{data?.description}</p>
-              <div><button className="bg-white px-6 py-3 text-[#1F1F1F] font-1 font-semibold hover:bg-[#F1F1F1] cursor-pointer">Reach Now</button></div>
+              <div><button onClick={()=>{
+disp({type:"open"})
+              }} className="bg-white px-6 py-3 text-[#1F1F1F] font-1 font-semibold hover:bg-[#F1F1F1] cursor-pointer">Request a Service</button></div>
             </div>
           ))}
         </div>
