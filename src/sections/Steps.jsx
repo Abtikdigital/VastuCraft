@@ -8,10 +8,10 @@ import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 function Steps() {
   const [openFaqIndex, setOpenFaqIndex] = useState(-1);
 
-  // Intersection Observer hook to detect when container is in view
+  // Intersection Observer hook
   const { ref, inView } = useInView({
-    triggerOnce: true, // animate only once
-    threshold: 0.3, // 30% of element visible to trigger
+    triggerOnce: true,
+    threshold: 0.2,
   });
 
   const faqs = [
@@ -36,58 +36,75 @@ function Steps() {
     setOpenFaqIndex(openFaqIndex === index ? -1 : index);
   };
 
-  // Animation variants for fade and slide up
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
+  // Animation variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <motion.section
-      className="p-8 md:p-14 bg-gray-50 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12"
+    <section
       ref={ref}
-      variants={containerVariants}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
+      className="p-8 md:p-14 bg-gray-50 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12"
     >
       {/* Left Image */}
-      <div>
-        <div className="flex justify-center items-center">
-          <img
-            src={Image1 || "https://via.placeholder.com/600x400"}
-            alt="Interior design inspiration"
-            className="w-full"
-            onError={(e) => {
-              e.target.src = "https://via.placeholder.com/600x400";
-            }}
-          />
-        </div>
-      </div>
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="flex justify-center items-center"
+      >
+        <img
+          src={Image1 || "https://via.placeholder.com/600x400"}
+          alt="Interior design inspiration"
+          className="w-full"
+          onError={(e) => {
+            e.target.src = "https://via.placeholder.com/600x400";
+          }}
+        />
+      </motion.div>
 
       {/* Right Content */}
       <div className="flex items-center">
         <div className="space-y-10 w-full">
           {/* Heading */}
-          <h2 className="text-[#1F1F1F] font-1 font-semibold text-3xl md:text-4xl lg:text-5xl leading-tight">
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-[#1F1F1F] font-1 font-semibold text-3xl md:text-4xl lg:text-5xl leading-tight"
+          >
             Designing Your Dream With Brilliance
-          </h2>
+          </motion.h2>
 
           {/* Paragraph */}
-          <p className="text-[#545454] paragraph-1 font-1">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="text-[#545454] paragraph-1 font-1"
+          >
             Elevate your spaces with bespoke interior designs that reflect your
             unique style and aspirations, crafted with precision and brilliance
             for an unforgettable living experience.
-          </p>
+          </motion.p>
 
           {/* FAQs */}
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={fadeUp}
+                initial="hidden"
+                animate={inView ? "visible" : "hidden"}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.6 + index * 0.2,
+                  ease: "easeOut",
+                }}
                 className="border-b border-gray-200 pb-4 last:border-b-0"
               >
                 <h3
@@ -111,12 +128,12 @@ function Steps() {
                     {faq.answer}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
 
