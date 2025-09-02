@@ -21,7 +21,7 @@ function Contact() {
     try {
       const res = await axios.post("/api/contactApi.js", data);
 
-      if (res.status === 200) {
+      if (res.status === 201) {
         Swal.fire({
           icon: "success",
           title: "Message Sent",
@@ -97,7 +97,7 @@ function Contact() {
                   className="bg-white text-[#939292] p-2 font-medium px-3 w-full outline-none font-1"
                   placeholder="Enter Your Message"
                   rows={4}
-                  {...register("message", { required: "* Message is required" })}
+                  {...register("message")}
                 />
                 {errors.message && (
                   <p className="text-red-500 text-sm">{errors.message.message}</p>

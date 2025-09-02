@@ -36,7 +36,7 @@ const contactSchema = mongoose.Schema(
       unique: true,
       trim: true,
     },
-    number: { type: Number, required: [true, "* Number is required"] },
+    phone: { type: Number, required: [true, "* Number is required"] },
     message: { type: String },
   },
   { timestamps: true }
@@ -48,7 +48,7 @@ const ContactModel =
 // VALIDATION SCHEMA
 const contactValidationSchema = joi.object({
   name: joi.string().required(),
-  number: joi.number().required(),
+  phone: joi.number().required(),
   email: joi.string().email({ tlds: { allow: false } }).required(),
 });
 
@@ -91,7 +91,7 @@ const firmTemplate = (data) => {
             <table width="100%" cellspacing="0" cellpadding="8" style="margin-top:15px; border-collapse:collapse;">
               <tr><th align="left" style="width:30%; background:#f56015; color:#fff;">Name</th><td>${name}</td></tr>
               <tr><th align="left" style="background:#f56015; color:#fff;">Email</th><td><a href="mailto:${email}">${email}</a></td></tr>
-              <tr><th align="left" style="background:#f56015; color:#fff;">Contact</th><td><a href="tel:+91${number}">${number}</a></td></tr>
+              <tr><th align="left" style="background:#f56015; color:#fff;">Contact</th><td><a href="tel:+91${phone}">${phone}</a></td></tr>
               <tr><th align="left" style="background:#f56015; color:#fff;">Message</th><td>${message}</td></tr>
             </table>
           </div>
@@ -137,18 +137,18 @@ const handler = async (req, res) => {
   }
   try {
     await dbConnection();
-    let { name, number, email, message } = req.body;
-    let { error } = contactValidationSchema.validate({ name, number, email });
+    let { name, phone, email, message } = req.body;
+    let { error } = contactValidationSchema.validate({ name, phone, email });
     if (error) {
       return res.status(400).json({ isSuccess: false, message: "Validation Error", error });
     }
 
-    let isDataExist = await ContactModel.findOne({ $or: [{ email }, { number }] });
+    let isDataExist = await ContactModel.findOne({ $or: [{ email }, { phone }] });
     if (isDataExist) {
       return res.status(409).json({ isSuccess: false, message: "Data Already Exists" });
     }
 
-    let newContact = new ContactModel(req.body);
+    let newContact = new ContactModel({...req.body,phone:Number(phone)});
     let isSaved = await newContact.save();
     if (isSaved) {
       await Promise.all([
