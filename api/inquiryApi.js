@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import joi, { number } from "joi";
+import joi from "joi";
 import nodemailer from "nodemailer";
 
 // ENV VARIABLES
@@ -33,7 +33,7 @@ const inquirySchema = mongoose.Schema(
       lowercase: true,
       trim: true,
     },
-    phone: { type: Number, required: [true, "* Number is required"] },
+    phone: { type: String, required: [true, "* Number is required"] },
 
     message: { type: String },
   },
@@ -46,7 +46,7 @@ const InquiryModel =
 // VALIDATION SCHEMA
 const inquiryValidationSchema = joi.object({
   name: joi.string().required(),
-  phone: joi.number().required(),
+  phone: joi.string().min(10).required(),
   email: joi
     .string()
     .email({ tlds: { allow: false } })
