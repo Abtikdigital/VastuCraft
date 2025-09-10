@@ -10,17 +10,17 @@ function Servicesection() {
   const services = [
     {
       title: "Interior Design",
-      desc: "Achieve the perfect balance of ambient, task, and accent lighting for a functional atmosphere",
+      desc: "Elegant, Vastu aligned designs that blend style, comfort, and harmony, transforming every corner into a welcoming space",
       img: Image1,
     },
     {
       title: "Office Spaces",
-      desc: "Achieve the perfect balance of ambient, task, and accent lighting for a functional atmosphere",
+      desc: "Smart, functional layouts that inspire focus, creativity, and productivity, while making workplaces more efficient and modern",
       img: Image2,
     },
     {
       title: "Custom Furniture",
-      desc: "Achieve the perfect balance of ambient, task, and accent lighting for a functional atmosphere",
+      desc: "Custom designed furniture crafted for durability, uniqueness, and timeless style, giving interiors a touch of elegance",
       img: Image3,
     },
   ];

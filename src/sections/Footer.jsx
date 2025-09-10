@@ -101,8 +101,8 @@ function Footer() {
         <div className="space-y-6 flex-3">
           <img src={Logo} alt="Logo" />
           <p className="text-[#D1D1D1] max-w-xs">
-            Abtik digital your premier destination for luxury and modern
-            interior design
+           Vastucraft Overseas
+Your trusted destination for luxury and modern interior design. We craft timeless residential spaces, dynamic commercial interiors, and innovative 3D concepts with premium quality materials.
           </p>
           <div className="flex gap-2">
             <button className="bg-[#313131] p-1 cursor-pointer">

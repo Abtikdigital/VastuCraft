@@ -18,17 +18,17 @@ function Steps() {
     {
       question: "How do you ensure the design reflects my personal style?",
       answer:
-        "We start with a detailed consultation to understand your preferences, lifestyle, and vision. Our designers then create customized mood boards and 3D renderings, ensuring every detail aligns with your unique style.",
+        "We collaborate closely with you, understanding your preferences, lifestyle, and vision, to create designs that feel truly personal.",
     },
     {
       question: "What is the typical timeline for a design project?",
       answer:
-        "Timelines vary based on project scope, but a standard residential project typically takes 8-12 weeks from concept to completion. We provide a detailed schedule during the planning phase to keep everything on track.",
+        "Timelines vary by project size, but we follow a structured process to ensure quality while delivering within agreed schedules.",
     },
     {
       question: "Can you work within my budget?",
       answer:
-        "Absolutely! We tailor our designs to fit your budget, offering flexible options and transparent pricing. Our team sources high-quality materials and furnishings to maximize value without compromising on style.",
+        "Absolutely! We customize our designs to fit your budget, offering flexible options and transparent pricing. Our team uses premium materials and furnishings to maximize value without compromising style.",
     },
   ];
 
@@ -87,9 +87,7 @@ function Steps() {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="text-[#545454] paragraph-1 font-1"
           >
-            Elevate your spaces with bespoke interior designs that reflect your
-            unique style and aspirations, crafted with precision and brilliance
-            for an unforgettable living experience.
+            Transform your spaces with bespoke interior designs that reflect your unique style and aspirations. Each project is crafted with precision, creativity, and brilliance to deliver an unforgettable living experience.
           </motion.p>
 
           {/* FAQs */}

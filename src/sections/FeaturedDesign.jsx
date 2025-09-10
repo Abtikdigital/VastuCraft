@@ -14,19 +14,19 @@ const processSteps = [
     icon: faRocket,
     title: "Start Project",
     description:
-      "Embark on your design adventure by initiating your project. Share your vision and set the stage for a bespoke design experience.",
+      "Begin your design journey by sharing your vision with us. This sets the foundation for a personalized and seamless design experience.",
   },
   {
     icon: faPaintBrush,
     title: "Design Phase",
     description:
-      "Collaborate with our team to bring your ideas to life. We craft stunning designs tailored to your unique needs.",
+      "Work closely with our expert team to shape your ideas. We create stunning, Vastu-aligned designs tailored to your style and needs.",
   },
   {
     icon: faCheckCircle,
     title: "Complete Project",
     description:
-      "Review and finalize your project. We ensure every detail is perfect before delivering your dream design.",
+      "Review, refine, and finalize every detail with confidence. We ensure your project is delivered flawlessly, ready for you to enjoy.",
   },
 ];
 

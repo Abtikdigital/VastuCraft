@@ -18,20 +18,20 @@ function Services() {
   const servicesData = [
     {
       img: Image1,
-      title: "Lorem Ipsum",
-      description: "Lorem Ipsum lorem ipsum",
+      title: "Residential Interior Design",
+      description: "Transform your home into a beautiful and functional space. Our expert designers create personalized interiors that reflect your unique style and needs, from concept to completion.",
       animation: { x: [-100, 0], opacity: [0, 1] }, // left → right
     },
     {
       img: Image2,
-      title: "Lorem Ipsum",
-      description: "Lorem Ipsum lorem ipsum",
+      title: "Office & Commercial Interiors",
+      description: "Create a professional and inspiring workspace. We design commercial spaces that enhance productivity, brand identity, and employee well being, tailored to your business.",
       animation: { y: [100, 0], opacity: [0, 1] }, // bottom → top
     },
     {
       img: Image3,
-      title: "Lorem Ipsum",
-      description: "Lorem Ipsum lorem ipsum lorem ipsum lorem ipsum",
+      title: "Space Planning & 3D Visualization",
+      description: "Visualize your dream space before it's built. Our detailed space planning and realistic 3D visualizations help you see the potential of your interior, ensuring every detail is perfect.",
       animation: { y: [-100, 0], opacity: [0, 1] }, // top → bottom
     },
   ];

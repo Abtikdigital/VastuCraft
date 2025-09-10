@@ -49,10 +49,7 @@ function Hero() {
         >
           <h1 className="font-1 heading-1">Interior Design</h1>
           <p className="paragraph-1">
-            Step into a world where the art of Interior Design is meticulously
-            crafted to bring together timeless elegance and cutting-edge modern
-            Innovation, Allowing you to transform your living spaces into the
-            epitome of luxury and sophistication
+            Transform your living spaces with designs that blend timeless elegance and modern innovation. At VASTUCRAFT OVERCEAS PRIVATE LIMITED, we craft interiors that are not only aesthetically pleasing but also Vastu-compliant, ensuring balance, positivity, and harmony in every corner of your home or workspace.
           </p>
         </motion.div>
 
@@ -95,21 +92,21 @@ function Hero() {
             <ul className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               <li className="space-y-1 text-center sm:text-left border p-1 rounded-sm flex justify-center items-center flex-col">
                 <h3 className="text-[#545454] text-4xl md:text-5xl font-normal">
-                  400+
+                  150+
                 </h3>
                 <p className="paragraph-1">Project Complete</p>
               </li>
               <li className="space-y-1 text-center sm:text-left border p-1 rounded-sm flex flex-col justify-center items-center">
                 <h3 className="text-[#545454] text-4xl md:text-5xl font-normal">
-                  600+
+                  120+
                 </h3>
-                <p className="paragraph-1">Satisfied Clients</p>
+                <p className="paragraph-1">Happy Clients</p>
               </li>
               <li className="space-y-1 text-center sm:text-left border p-1 rounded-sm flex flex-col justify-center items-center">
                 <h3 className="text-[#545454] text-4xl md:text-5xl font-normal">
-                  100+
+                  10+
                 </h3>
-                <p className="paragraph-1">Unique Styles</p>
+                <p className="paragraph-1">Year of experience</p>
               </li>
             </ul>
           </div>
