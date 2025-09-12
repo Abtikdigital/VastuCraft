@@ -180,7 +180,7 @@ const Testimonial = () => {
       </div>
       <section className="md:top-[30%] md:left-[30%] lg:absolute w-full lg:w-auto">
         <div
-          className="relative lg:p-6 bg-white md:max-w-4xl md:mx-auto rounded-lg"
+          className="relative lg:p-6 bg-[#1f1f1f] md:max-w-4xl md:mx-auto rounded-lg"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >

@@ -21,7 +21,7 @@ function Navbar() {
   return (
     <>
       {/* Desktop Navbar */}
-      <section className="hidden lg:flex justify-between items-center py-4 px-12 sticky top-0 bg-white z-[9999] shadow-md">
+      <section className="hidden lg:flex justify-between items-center py-4 px-12 sticky top-0 bg-[#1f1f1f] z-[9999] shadow-md">
         <div>
           <img
             src={Logo}
@@ -36,13 +36,13 @@ function Navbar() {
               to={link.path}
               className={`relative text-lg font-medium transition-colors group duration-300 ${
                 pathname === link.path
-                  ? "text-[#1F1F1F] font-semibold"
-                  : "text-[#545454] hover:text-[#1F1F1F]"
+                  ? "text-gray-200 font-semibold"
+                  : "text-gray-200 hover:text-white"
               }`}
             >
               {link.name}
               <span
-                className={`absolute left-0 bottom-[-6px] h-1 rounded-sm group-hover:w-full bg-[#1F1F1F] transition-all duration-300 ${
+                className={`absolute left-0 bottom-[-6px] h-1 rounded-sm group-hover:w-full bg-white transition-all duration-300 ${
                   pathname === link.path ? "w-full" : "w-0 group-hover:w-full"
                 }`}
               ></span>
@@ -50,7 +50,7 @@ function Navbar() {
           ))}
         </ul>
         <div>
-          <a className="  justify-center inline-flex text-[#1f1f1f] gap-3 items-center  cursor-pointer   text-base font-semibold font-1 transition-all duration-300 ">
+          <a className="  justify-center inline-flex text-white gap-3 items-center  cursor-pointer   text-base font-semibold font-1 transition-all duration-300 ">
             <FontAwesomeIcon
               icon={faPhone}
               fontSize={22}
@@ -66,7 +66,7 @@ function Navbar() {
       </section>
 
       {/* Mobile Navbar */}
-      <section className="block lg:hidden p-5 sticky top-0  shadow-md bg-white z-[9999]">
+      <section className="block lg:hidden p-5 sticky top-0  shadow-md bg-[#1f1f1f] z-[9999]">
         <div className="flex justify-between items-center">
           <img
             src={Logo}
@@ -75,7 +75,7 @@ function Navbar() {
           />
           <button
             onClick={toggleMenu}
-            className="p-2 rounded-xs bg-white/80 backdrop-blur-sm text-[#1F1F1F] hover:bg-white transition-all duration-300"
+            className="p-2 rounded-xs bg-white backdrop-blur-sm text-[#1F1F1F] hover:bg-white transition-all duration-300"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -87,7 +87,7 @@ function Navbar() {
             isOpen ? "max-h-[600px] opacity-100 mt-4" : "max-h-0 opacity-0"
           }`}
         >
-          <ul className="flex flex-col gap-3 bg-white backdrop-blur-md  p-2">
+          <ul className="flex flex-col gap-3 bg-[#1f1f1f] backdrop-blur-md  p-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -96,7 +96,7 @@ function Navbar() {
                 className={`w-full text-center py-3 rounded-xs text-lg font-medium transition-all duration-300 ${
                   pathname === link.path
                     ? "[background:linear-gradient(319.78deg,#C19432_13.44%,#FAE45F_45.57%,#DEBC49_77.09%)] text-white font-semibold"
-                    : "text-[#545454] hover:bg-[#545454]/20 hover:text-[#1F1F1F]"
+                    : "text-white hover:bg-[#545454]/20 hover:text-gray-200"
                 }`}
               >
                 {link.name}

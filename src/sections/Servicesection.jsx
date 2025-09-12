@@ -65,7 +65,7 @@ function Servicesection() {
         </p>
 
         {/* Services Grid */}
-        <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, i) => (
             <FadeIn key={i} delay={i * 0.2}>
               <div className="p-4 sm:p-6 flex gap-3 bg-white shadow-md rounded-lg hover:shadow-lg transition duration-300">

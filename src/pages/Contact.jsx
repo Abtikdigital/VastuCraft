@@ -66,9 +66,9 @@ function Contact() {
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="p-6 md:p-10 lg:p-20"
+        className="p-6 md:p-10 lg:p-20 bg-[#1f1f1f]"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10  p-6 md:p-10"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10   p-6 md:p-10"
         style={{
            background: "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
         }}
