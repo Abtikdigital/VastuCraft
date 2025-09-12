@@ -45,7 +45,7 @@ function Steps() {
   return (
     <section
       ref={ref}
-      className="p-8 md:p-14 bg-gray-50 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12"
+      className="p-8 md:p-14 bg-[#1f1f1f] grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12"
     >
       {/* Left Image */}
       <motion.div
@@ -74,7 +74,7 @@ function Steps() {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-[#1F1F1F] font-1 font-semibold text-3xl md:text-4xl lg:text-5xl leading-tight"
+            className="text-white font-1 font-semibold text-3xl md:text-4xl lg:text-5xl leading-tight"
           >
             Designing Your Dream With Brilliance
           </motion.h2>
@@ -107,7 +107,7 @@ function Steps() {
               >
                 <h3
                   onClick={() => toggleFaq(index)}
-                  className="flex justify-between items-center text-[#1F1F1F] font-1 font-semibold text-lg md:text-xl cursor-pointer transition-colors duration-200 hover:text-[#3a3a3a]"
+                  className="flex justify-between items-center text-white font-1 font-semibold text-lg md:text-xl cursor-pointer transition-colors duration-200 hover:text-gray-300"
                 >
                   <span>{faq.question}</span>
                   <FontAwesomeIcon

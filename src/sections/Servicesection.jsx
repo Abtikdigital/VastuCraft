@@ -54,10 +54,10 @@ function Servicesection() {
   };
 
   return (
-    <section className="py-12 sm:py-20 bg-white overflow-hidden">
+    <section className="py-12 sm:py-20 bg-[#1f1f1f] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <h2 className="text-[#1F1F1F] font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight flex items-center gap-3">
+        <h2 className="text-white font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight flex items-center gap-3">
           <div className="bg-[#1F1F1F] h-[3px] w-12 sm:w-16"></div>Our Services
         </h2>
         <p className="mt-2 text-[#545454] text-sm sm:text-base">

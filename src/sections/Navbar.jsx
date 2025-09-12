@@ -21,7 +21,7 @@ function Navbar() {
   return (
     <>
       {/* Desktop Navbar */}
-      <section className="hidden md:flex justify-between items-center py-4 px-12 sticky top-0 bg-white z-[9999] shadow-md">
+      <section className="hidden lg:flex justify-between items-center py-4 px-12 sticky top-0 bg-white z-[9999] shadow-md">
         <div>
           <img
             src={Logo}
@@ -66,7 +66,7 @@ function Navbar() {
       </section>
 
       {/* Mobile Navbar */}
-      <section className="block md:hidden p-5 sticky top-0  shadow-md bg-white z-[9999]">
+      <section className="block lg:hidden p-5 sticky top-0  shadow-md bg-white z-[9999]">
         <div className="flex justify-between items-center">
           <img
             src={Logo}
@@ -95,7 +95,7 @@ function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={`w-full text-center py-3 rounded-xs text-lg font-medium transition-all duration-300 ${
                   pathname === link.path
-                    ? "bg-[#1F1F1F] text-white font-semibold"
+                    ? "[background:linear-gradient(319.78deg,#C19432_13.44%,#FAE45F_45.57%,#DEBC49_77.09%)] text-white font-semibold"
                     : "text-[#545454] hover:bg-[#545454]/20 hover:text-[#1F1F1F]"
                 }`}
               >
@@ -103,7 +103,7 @@ function Navbar() {
               </Link>
             ))}
             <div className="w-full flex justify-center mt-5">
-              <button className="primary-button">96 5261 236</button>
+              <button className="primary-button text-white">96 5261 236</button>
             </div>
           </ul>
         </div>

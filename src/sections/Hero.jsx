@@ -35,7 +35,9 @@ function Hero() {
   }, []);
 
   return (
-    <section className="p-6 md:p-10 lg:p-20 space-y-6 overflow-hidden">
+    <section className="p-6 md:p-10 lg:p-20 space-y-6 overflow-hidden bg-[#1F1F1F]"
+   
+    >
       {/* Top Section */}
       <div
         ref={topRef}
@@ -90,20 +92,20 @@ function Hero() {
           {/* Stats - Responsive */}
           <div>
             <ul className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              <li className="space-y-1 text-center sm:text-left border p-1 rounded-sm flex justify-center items-center flex-col">
-                <h3 className="text-[#545454] text-4xl md:text-5xl font-normal">
+              <li className="space-y-1 text-center sm:text-left border border-gray-200 p-1 rounded-sm flex justify-center items-center flex-col">
+                <h3 className="text-gray-200 text-4xl md:text-5xl font-normal">
                   150+
                 </h3>
                 <p className="paragraph-1">Project Complete</p>
               </li>
-              <li className="space-y-1 text-center sm:text-left border p-1 rounded-sm flex flex-col justify-center items-center">
-                <h3 className="text-[#545454] text-4xl md:text-5xl font-normal">
+              <li className="space-y-1 text-center sm:text-left border border-gray-200 p-1 rounded-sm flex flex-col justify-center items-center">
+                <h3 className="text-gray-200 text-4xl md:text-5xl font-normal">
                   120+
                 </h3>
                 <p className="paragraph-1">Happy Clients</p>
               </li>
-              <li className="space-y-1 text-center sm:text-left border p-1 rounded-sm flex flex-col justify-center items-center">
-                <h3 className="text-[#545454] text-4xl md:text-5xl font-normal">
+              <li className="space-y-1 text-center sm:text-left border border-gray-200 p-1 rounded-sm flex flex-col justify-center items-center">
+                <h3 className="text-gray-200 text-4xl md:text-5xl font-normal">
                   10+
                 </h3>
                 <p className="paragraph-1">Year of experience</p>

@@ -131,7 +131,7 @@ const Testimonial = () => {
 
   return (
     <section
-      className="grid grid-cols-1 lg:grid-cols-2 p-6 md:p-20 gap-10 relative"
+      className="grid grid-cols-1 lg:grid-cols-2 p-6 md:p-20 gap-10 relative bg-[#1F1F1F]"
       ref={ref}
     >
       <div className="space-y-6">

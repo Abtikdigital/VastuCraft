@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image1 from "../assets/FeaturedDesign/Image1.png";
@@ -8,6 +8,7 @@ import {
   faPaintBrush,
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import { useLocation } from "react-router-dom";
 
 const processSteps = [
   {
@@ -61,9 +62,11 @@ const FadeIn = ({ children, delay = 0 }) => {
   );
 };
 
+
+
 function ProcessMap() {
   return (
-    <section className="p-6 md:p-10 lg:p-20 bg-white grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+    <section className="p-6 md:p-10 lg:p-20 bg-[#1f1f1f] grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
       <div className="space-y-10">
         <FadeIn delay={0.2}>
           <h2 className="text-[#1F1F1F] font-1 font-semibold text-3xl md:text-4xl lg:text-5xl font-1 leading-tight">

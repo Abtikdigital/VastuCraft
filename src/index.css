@@ -14,9 +14,9 @@
 }
 
 .heading-1 {
-  @apply font-medium text-6xl text-[#1F1F1F];
+  @apply font-medium text-6xl text-white;
 }
 
 .paragraph-1 {
-  @apply font-medium text-base text-[#545454];
+  @apply font-medium text-base text-gray-300;
 }
