@@ -68,7 +68,11 @@ function Contact() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="p-6 md:p-10 lg:p-20"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 bg-[#1F1F1F] p-6 md:p-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10  p-6 md:p-10"
+        style={{
+           background: "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
+        }}
+        >
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -88,7 +92,7 @@ function Contact() {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
                 <input
-                  className="bg-white text-[#939292] font-medium p-2 px-3 w-full outline-none font-1"
+                  className="bg-white text-[#1F1F1F] font-medium p-2 px-3 w-full outline-none font-1"
                   placeholder="Enter Your Name"
                   {...register("name", { required: "* Name is required" })}
                   disabled={loading}
@@ -99,7 +103,7 @@ function Contact() {
               </div>
               <div>
                 <input
-                  className="bg-white text-[#939292] font-medium p-2 px-3 w-full outline-none font-1"
+                  className="bg-white text-[#1F1F1F] font-medium p-2 px-3 w-full outline-none font-1"
                   placeholder="Enter Your Number"
                   {...register("phone", {
                     required: "* Phone number is required",
@@ -113,7 +117,7 @@ function Contact() {
               </div>
               <div>
                 <input
-                  className="bg-white text-[#939292] p-2 px-3 font-medium w-full outline-none font-1"
+                  className="bg-white text-[#1F1F1F] p-2 px-3 font-medium w-full outline-none font-1"
                   placeholder="Enter Your Email"
                   {...register("email", {
                     required: "* Email is required",
@@ -130,7 +134,7 @@ function Contact() {
               </div>
               <div>
                 <textarea
-                  className="bg-white text-[#939292] p-2 font-medium px-3 w-full outline-none font-1"
+                  className="bg-white text-[#1F1F1F] p-2 font-medium px-3 w-full outline-none font-1"
                   placeholder="Enter Your Message"
                   rows={4}
                   {...register("message")}

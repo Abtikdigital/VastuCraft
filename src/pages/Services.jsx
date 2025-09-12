@@ -58,7 +58,10 @@ function Services() {
                 initial={{ opacity: 0 }}
                 animate={inView ? data.animation : { opacity: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="bg-[#1F1F1F] p-6 space-y-3"
+                className=" p-6 space-y-3"
+                style={{
+                   background: "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
+                }}
               >
                 <div>
                   <img src={data?.img} alt={data?.title} />

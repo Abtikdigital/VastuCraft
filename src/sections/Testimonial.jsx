@@ -130,7 +130,10 @@ const Testimonial = () => {
   });
 
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 p-6 md:p-20 gap-10 relative" ref={ref}>
+    <section
+      className="grid grid-cols-1 lg:grid-cols-2 p-6 md:p-20 gap-10 relative"
+      ref={ref}
+    >
       <div className="space-y-6">
         <img
           src={Image1 || "https://via.placeholder.com/600x400"}
@@ -141,8 +144,12 @@ const Testimonial = () => {
         />
         <div className="flex gap-6">
           <button
-            className="bg-[#F1F1F1] p-2 rounded-xs"
+            className=" p-2 rounded-xs cursor-pointer"
             onClick={handlePrev}
+            style={{
+              background:
+                "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
+            }}
           >
             <FontAwesomeIcon
               icon={faArrowLeft}
@@ -151,8 +158,12 @@ const Testimonial = () => {
             />
           </button>
           <button
-            className="bg-[#F1F1F1] p-2 rounded-xs"
+            className="bg-[#F1F1F1] p-2 rounded-xs   cursor-pointer"
             onClick={handleNext}
+            style={{
+              background:
+                "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
+            }}
           >
             <FontAwesomeIcon
               icon={faArrowRight}
@@ -178,14 +189,20 @@ const Testimonial = () => {
               <motion.div
                 className="flex gap-6"
                 style={{
-                  transform: `translateX(-${currentIndex * (100 / cardsPerSlide)}%)`,
+                  transform: `translateX(-${
+                    currentIndex * (100 / cardsPerSlide)
+                  }%)`,
                 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
               >
                 {testmonialData.map((data, index) => (
                   <motion.div
                     key={index}
-                    className={`flex-none w-[calc(100%-20px)] md:w-[calc(50%-24px)] min-h-96 bg-[#1F1F1F] p-6 md:p-6 space-y-6`}
+                    className={`flex-none w-[calc(100%-20px)] md:w-[calc(50%-24px)] min-h-96  p-6 md:p-6 space-y-6`}
+                    style={{
+                      background:
+                        "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
+                    }}
                     variants={cardVariants(index)}
                     initial="hidden"
                     animate={inView ? "visible" : "hidden"} // Animate only when in view

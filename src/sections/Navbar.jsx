@@ -51,8 +51,16 @@ function Navbar() {
         </ul>
         <div>
           <a className="  justify-center inline-flex text-[#1f1f1f] gap-3 items-center  cursor-pointer   text-base font-semibold font-1 transition-all duration-300 ">
-         
-          <FontAwesomeIcon icon={faPhone} fontSize={22} className="bg-[#313131] text-white p-1 py-1.5 "/> +91 96 5261 236
+            <FontAwesomeIcon
+              icon={faPhone}
+              fontSize={22}
+              className=" text-white p-1 py-1.5 "
+              style={{
+                background:
+                  "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
+              }}
+            />{" "}
+            +91 96 5261 236
           </a>
         </div>
       </section>

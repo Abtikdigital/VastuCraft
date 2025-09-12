@@ -75,7 +75,11 @@ function ProcessMap() {
             <section className="flex justify-between gap-3 items-start md:items-center">
               <div className="flex flex-col items-center gap-3">
                 <div>
-                  <span className="rounded-full p-2 bg-[#1F1F1F]">
+                  <span className="rounded-full p-2 "
+                  style={{
+                     background: "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
+                  }}
+                  >
                     <FontAwesomeIcon icon={step.icon} className="text-white" />
                   </span>
                 </div>

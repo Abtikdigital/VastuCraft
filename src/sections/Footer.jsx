@@ -79,9 +79,12 @@ function Footer() {
           />
           <button
             type="submit"
+            style={{
+               background: "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
+            }}
             disabled={loading} // 🔹 Prevent click while loading
-            className={`py-2.5 px-6 text-base font-1 transition-all duration-300 font-semibold 
-              ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-[#1F1F1F] hover:bg-[#F1F1F1] hover:text-[#1f1f1f] text-white"}
+            className={`py-2.5 px-6 text-base font-1 transition-all duration-300 cursor-pointer font-semibold 
+              ${loading ? "bg-gray-400 cursor-not-allowed" : ""}
             `}
           >
             {loading ? "Submitting..." : "Subscribe"}
