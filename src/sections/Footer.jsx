@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo/Logo1.png";
+import { ArrowRight } from "lucide-react";
 import {
   faFacebook,
   faInstagram,
@@ -54,14 +55,14 @@ function Footer() {
   return (
     <section className="relative">
       {/* Input box overlapping footer */}
-      <section className="w-full -top-8 flex justify-center items-center md:absolute">
+      <section className="w-full -top-8 mb-4 md:mb-0 flex justify-center items-center md:absolute px-4">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex items-center w-full md:w-xl bg-white shadow-md border border-gray-300"
+          className="flex flex-row items-center w-full max-w-xl bg-white shadow-md border border-gray-300 rounded-md overflow-hidden"
         >
           <FontAwesomeIcon
             icon={faEnvelope}
-            className="text-gray-400 ml-3"
+            className="text-gray-400 pl-3 md:ml-3"
             fontSize={20}
           />
           <input
@@ -75,19 +76,30 @@ function Footer() {
               },
             })}
             className="flex-1 px-4 py-3 text-gray-700 outline-none border-none"
-            disabled={loading} // 🔹 Disable input while submitting
+            disabled={loading}
           />
+
+          {/* Button wrapper keeps row alignment */}
           <button
             type="submit"
             style={{
-               background: "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
+              background:
+                "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
             }}
-            disabled={loading} // 🔹 Prevent click while loading
-            className={`py-2.5 px-6 text-base font-1 transition-all duration-300 cursor-pointer font-semibold 
-              ${loading ? "bg-gray-400 cursor-not-allowed" : ""}
-            `}
+            disabled={loading}
+            className={`flex items-center justify-center py-2.5 px-6 text-base font-1 transition-all duration-300 cursor-pointer font-semibold
+        ${loading ? "bg-gray-400 cursor-not-allowed" : ""}
+      `}
           >
-            {loading ? "Submitting..." : "Subscribe"}
+            {/* Desktop text */}
+            <span className="hidden md:block">
+              {loading ? "Submitting..." : "Subscribe"}
+            </span>
+
+            {/* Mobile arrow */}
+            <span className="block md:hidden">
+              {loading ? "..." : <ArrowRight className="w-5 h-5 text-white" />}
+            </span>
           </button>
         </form>
       </section>
@@ -104,27 +116,47 @@ function Footer() {
         <div className="space-y-6 flex-3">
           <img src={Logo} alt="Logo" />
           <p className="text-[#D1D1D1] max-w-xs">
-           Vastucraft Overseas
-Your trusted destination for luxury and modern interior design. We craft timeless residential spaces, dynamic commercial interiors, and innovative 3D concepts with premium quality materials.
+            Vastucraft Overseas Your trusted destination for luxury and modern
+            interior design. We craft timeless residential spaces, dynamic
+            commercial interiors, and innovative 3D concepts with premium
+            quality materials.
           </p>
           <div className="flex gap-2">
             <button className="bg-[#313131] p-1 cursor-pointer">
-              <FontAwesomeIcon icon={faFacebook} fontSize={22} className="text-white" />
+              <FontAwesomeIcon
+                icon={faFacebook}
+                fontSize={22}
+                className="text-white"
+              />
             </button>
             <button className="bg-[#313131] p-1 cursor-pointer">
-              <FontAwesomeIcon icon={faInstagram} fontSize={22} className="text-white" />
+              <FontAwesomeIcon
+                icon={faInstagram}
+                fontSize={22}
+                className="text-white"
+              />
             </button>
             <button className="bg-[#313131] p-1 cursor-pointer">
-              <FontAwesomeIcon icon={faLinkedin} fontSize={22} className="text-white" />
+              <FontAwesomeIcon
+                icon={faLinkedin}
+                fontSize={22}
+                className="text-white"
+              />
             </button>
             <button className="bg-[#313131] p-1 cursor-pointer">
-              <FontAwesomeIcon icon={faTwitter} fontSize={22} className="text-white" />
+              <FontAwesomeIcon
+                icon={faTwitter}
+                fontSize={22}
+                className="text-white"
+              />
             </button>
           </div>
         </div>
 
         <div className="space-y-3 flex-2">
-          <h2 className="text-white text-xl font-semibold font-1">Our Company</h2>
+          <h2 className="text-white text-xl font-semibold font-1">
+            Our Company
+          </h2>
           <div className="space-y-2">
             <Link
               className="block hover:text-gray-400 text-[#D1D1D1] font-1 text-base transition-all duration-300 hover:underline"
