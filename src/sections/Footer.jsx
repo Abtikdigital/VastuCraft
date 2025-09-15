@@ -57,7 +57,7 @@ function Footer() {
       <section className="w-full -top-8 flex justify-center items-center md:absolute">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex items-center max-w-full p-1.5 md:w-xl bg-white shadow-md border border-gray-300"
+          className="flex items-center w-full md:w-xl bg-white shadow-md border border-gray-300"
         >
           <FontAwesomeIcon
             icon={faEnvelope}
@@ -134,19 +134,19 @@ Your trusted destination for luxury and modern interior design. We craft timeles
             </Link>
             <Link
               className="block hover:text-gray-400 text-[#D1D1D1] font-1 text-base transition-all duration-300 hover:underline"
-              to={"/"}
+              to={"/about"}
             >
               About
             </Link>
             <Link
               className="block hover:text-gray-400 text-[#D1D1D1] font-1 text-base transition-all duration-300 hover:underline"
-              to={"/"}
+              to={"/services"}
             >
               Services
             </Link>
             <Link
               className="block hover:text-gray-400 text-[#D1D1D1] font-1 text-base transition-all duration-300 hover:underline"
-              to={"/"}
+              to={"/contact"}
             >
               Contact
             </Link>
