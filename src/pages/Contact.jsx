@@ -162,7 +162,7 @@ function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`flex items-center justify-center gap-2 py-2.5 px-6 text-base font-semibold font-1 transition ${
+                  className={`flex items-center justify-center gap-2 py-2.5 px-6 text-base font-semibold cursor-pointer font-1 transition ${
                     loading
                       ? "bg-gray-400 text-white cursor-not-allowed"
                       : "bg-white text-[#1F1F1F] hover:bg-gray-200"
