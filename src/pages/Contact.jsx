@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Helmet } from "react-helmet";
 
 function Contact() {
   const [loading, setLoading] = useState(false);
@@ -57,7 +58,20 @@ function Contact() {
     visible: { opacity: 1, y: 0 },
   };
 
-  return (
+  return (<>
+        <Helmet>
+        <meta charSet="utf-8" />
+        <meta
+          name="description"
+          content="Get in touch with VastuCraft to discuss your interior design needs and create a space that’s stylish and Vastu compliant."
+        />
+        <meta
+          name="keywords"
+          content=" Contact interior designe , Book interior design consultation , Get in touch with VastuCraft"
+        />
+        <title>Contact VastuCraft – Book Interior Design Experts</title>
+      </Helmet>
+  
     <Mainlayout>
       <Hero />
       <motion.section
@@ -92,7 +106,7 @@ function Contact() {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
                 <input
-                  className="bg-white text-[#1F1F1F] font-medium p-2 px-3 w-full outline-none font-1"
+                  className="bg-white text-[#1F1F1F] border border-[#debc49] font-medium p-2 px-3 w-full outline-none font-1"
                   placeholder="Enter Your Name"
                   {...register("name", { required: "* Name is required" })}
                   disabled={loading}
@@ -103,7 +117,7 @@ function Contact() {
               </div>
               <div>
                 <input
-                  className="bg-white text-[#1F1F1F] font-medium p-2 px-3 w-full outline-none font-1"
+                  className="bg-white text-[#1F1F1F] border border-[#debc49] font-medium p-2 px-3 w-full outline-none font-1"
                   placeholder="Enter Your Number"
                   {...register("phone", {
                     required: "* Phone number is required",
@@ -117,7 +131,7 @@ function Contact() {
               </div>
               <div>
                 <input
-                  className="bg-white text-[#1F1F1F] p-2 px-3 font-medium w-full outline-none font-1"
+                  className="bg-white text-[#1F1F1F] border border-[#debc49] p-2 px-3 font-medium w-full outline-none font-1"
                   placeholder="Enter Your Email"
                   {...register("email", {
                     required: "* Email is required",
@@ -134,7 +148,7 @@ function Contact() {
               </div>
               <div>
                 <textarea
-                  className="bg-white text-[#1F1F1F] p-2 font-medium px-3 w-full outline-none font-1"
+                  className="bg-white text-[#1F1F1F] border border-[#debc49] p-2 font-medium px-3 w-full outline-none font-1"
                   placeholder="Enter Your Message"
                   rows={4}
                   {...register("message")}
@@ -166,6 +180,7 @@ function Contact() {
       </motion.section>
       <Newsletter />
     </Mainlayout>
+  </>
   );
 }
 

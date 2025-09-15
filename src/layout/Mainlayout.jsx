@@ -17,7 +17,7 @@ function Mainlayout(props) {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -56,14 +56,17 @@ function Mainlayout(props) {
       {isOpen && (
         <div className="flex fixed z-[9999999] inset-0 justify-center items-center w-screen h-screen bg-black/50">
           <div className="bg-white shadow-xl p-8 w-[90%] md:w-[500px] border border-gray-200 relative">
-            
             {/* X Close Button */}
             <button
               onClick={() => dispatch({ type: "close" })}
               disabled={loading} // 🔹 Prevent close click while submitting
-              className={`absolute top-5 right-3 cursor-pointer text-gray-600 hover:text-black text-xl font-bold border p-1 ${
-                loading ? "opacity-50 cursor-not-allowed" : ""
-              }`}
+              className={`absolute top-5 right-3 cursor-pointer    bg-[linear-gradient(319.78deg,#c19432_13.44%,#fae45f_45.57%,#debc49_77.09%)]
+    shadow-[inset_0_0_0_2px_#f7e05d,inset_3px_3px_6px_#c19432]
+
+    hover:bg-[linear-gradient(139.78deg,#c19432_13.44%,#fae45f_45.57%,#debc49_77.09%)]
+    hover:shadow-[inset_0_0_0_2px_#c19432,inset_-3px_-3px_6px_#debc49] text-gray-600 hover:text-black text-xl font-bold  p-1 ${
+      loading ? "opacity-50 cursor-not-allowed" : ""
+    }`}
             >
               <X />
             </button>
@@ -78,7 +81,7 @@ function Mainlayout(props) {
                   type="text"
                   placeholder="Enter Your Name"
                   {...register("name", { required: "* Name is required" })}
-                  className="w-full border p-3 outline-none font-medium text-gray-700"
+                  className="w-full border border-[#debc49] p-3 outline-none font-medium text-gray-700"
                   disabled={loading}
                 />
                 {errors.name && (
@@ -92,9 +95,12 @@ function Mainlayout(props) {
                   placeholder="Enter Your Number"
                   {...register("phone", {
                     required: "* Phone number is required",
-                    minLength: { value: 10, message: "Must be at least 10 digits" },
+                    minLength: {
+                      value: 10,
+                      message: "Must be at least 10 digits",
+                    },
                   })}
-                  className="w-full border p-3 outline-none font-medium text-gray-700"
+                  className="w-full border border-[#debc49] p-3 outline-none font-medium text-gray-700"
                   disabled={loading}
                 />
                 {errors.phone && (
@@ -113,7 +119,7 @@ function Mainlayout(props) {
                       message: "Invalid email address",
                     },
                   })}
-                  className="w-full border p-3 outline-none font-medium text-gray-700"
+                  className="w-full border border-[#debc49] p-3 outline-none font-medium text-gray-700"
                   disabled={loading}
                 />
                 {errors.email && (
@@ -126,7 +132,7 @@ function Mainlayout(props) {
                   placeholder="Enter Your Message"
                   rows="4"
                   {...register("message")}
-                  className="w-full border p-3 outline-none font-medium text-gray-700"
+                  className="w-full border border-[#debc49] p-3 outline-none font-medium text-gray-700"
                   disabled={loading}
                 />
                 {errors.message && (
@@ -139,10 +145,10 @@ function Mainlayout(props) {
               <button
                 type="submit"
                 disabled={loading}
-                className={`w-full py-3 font-semibold transition ${
+                className={`w-full py-3 font-semibold transition  ${
                   loading
                     ? "bg-gray-400 cursor-not-allowed text-white"
-                    : "bg-black text-white hover:bg-gray-800 cursor-pointer"
+                    : "primary-button text-white  cursor-pointer"
                 }`}
               >
                 {loading ? "Submitting..." : "Submit Inquiry"}

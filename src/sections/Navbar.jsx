@@ -54,11 +54,15 @@ function Navbar() {
             <FontAwesomeIcon
               icon={faPhone}
               fontSize={22}
-              className=" text-white p-1 py-1.5 "
-              style={{
-                background:
-                  "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
-              }}
+              className=" text-white p-1 py-1.5     bg-[linear-gradient(319.78deg,#c19432_13.44%,#fae45f_45.57%,#debc49_77.09%)]
+    shadow-[inset_0_0_0_2px_#f7e05d,inset_3px_3px_6px_#c19432]
+
+    hover:bg-[linear-gradient(139.78deg,#c19432_13.44%,#fae45f_45.57%,#debc49_77.09%)]
+    hover:shadow-[inset_0_0_0_2px_#c19432,inset_-3px_-3px_6px_#debc49]"
+              // style={{
+              //   background:
+              //     "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
+              // }}
             />{" "}
             +91 96 5261 236
           </a>
@@ -95,7 +99,7 @@ function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={`w-full text-center py-3 rounded-xs text-lg font-medium transition-all duration-300 ${
                   pathname === link.path
-                    ? "[background:linear-gradient(319.78deg,#C19432_13.44%,#FAE45F_45.57%,#DEBC49_77.09%)] text-white font-semibold"
+                    ? " primary-button text-white font-semibold"
                     : "text-white hover:bg-[#545454]/20 hover:text-gray-200"
                 }`}
               >

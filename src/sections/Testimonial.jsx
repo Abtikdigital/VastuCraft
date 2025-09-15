@@ -144,12 +144,13 @@ const Testimonial = () => {
         />
         <div className="flex gap-6">
           <button
-            className=" p-2 rounded-xs cursor-pointer"
+            className=" p-2 rounded-xs cursor-pointer    bg-[linear-gradient(319.78deg,#c19432_13.44%,#fae45f_45.57%,#debc49_77.09%)]
+    shadow-[inset_0_0_0_2px_#f7e05d,inset_3px_3px_6px_#c19432]
+
+    hover:bg-[linear-gradient(139.78deg,#c19432_13.44%,#fae45f_45.57%,#debc49_77.09%)]
+    hover:shadow-[inset_0_0_0_2px_#c19432,inset_-3px_-3px_6px_#debc49]"
             onClick={handlePrev}
-            style={{
-              background:
-                "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
-            }}
+         
           >
             <FontAwesomeIcon
               icon={faArrowLeft}
@@ -158,12 +159,13 @@ const Testimonial = () => {
             />
           </button>
           <button
-            className="bg-[#F1F1F1] p-2 rounded-xs   cursor-pointer"
+            className="bg-[#F1F1F1] p-2 rounded-xs   cursor-pointer    bg-[linear-gradient(319.78deg,#c19432_13.44%,#fae45f_45.57%,#debc49_77.09%)]
+    shadow-[inset_0_0_0_2px_#f7e05d,inset_3px_3px_6px_#c19432]
+
+    hover:bg-[linear-gradient(139.78deg,#c19432_13.44%,#fae45f_45.57%,#debc49_77.09%)]
+    hover:shadow-[inset_0_0_0_2px_#c19432,inset_-3px_-3px_6px_#debc49]"
             onClick={handleNext}
-            style={{
-              background:
-                "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
-            }}
+       
           >
             <FontAwesomeIcon
               icon={faArrowRight}

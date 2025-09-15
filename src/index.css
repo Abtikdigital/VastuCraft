@@ -1,9 +1,21 @@
 @import "tailwindcss";
 .primary-button {
-  @apply font-semibold text-base py-2.5 px-6 transition-all duration-300 flex justify-center items-center cursor-pointer;
+  @apply font-semibold text-base py-2.5 px-6 
+         shadow-[inset_0_0_0_2px_#f7e05d,inset_3px_3px_6px_#c19432] 
+         transition-all duration-500 flex justify-center items-center cursor-pointer;
   background: linear-gradient(
     319.78deg,
     #c19432 13.44%,
+    #fae45f 45.57%,
+    #debc49 77.09%
+  );
+}
+
+.primary-button:hover {
+  @apply shadow-[inset_0_0_0_2px_#c19432,inset_-3px_-3px_6px_#debc49];
+  background: linear-gradient(
+    139.78deg,
+    /* flipped direction */ #c19432 13.44%,
     #fae45f 45.57%,
     #debc49 77.09%
   );

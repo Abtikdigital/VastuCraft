@@ -58,11 +58,11 @@ function Footer() {
       <section className="w-full -top-8 mb-4 md:mb-0 flex justify-center items-center md:absolute px-4">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-row items-center w-full max-w-xl bg-white shadow-md border border-gray-300 rounded-md overflow-hidden"
+          className="flex flex-row items-center w-full max-w-xl  bg-white shadow-md border border-gray-300 rounded-md overflow-hidden"
         >
           <FontAwesomeIcon
             icon={faEnvelope}
-            className="text-gray-400 pl-3 md:ml-3"
+            className="text-gray-400 pl-3 md:pl-0 md:ml-3"
             fontSize={20}
           />
           <input
@@ -82,12 +82,12 @@ function Footer() {
           {/* Button wrapper keeps row alignment */}
           <button
             type="submit"
-            style={{
-              background:
-                "linear-gradient(319.78deg, #C19432 13.44%, #FAE45F 45.57%, #DEBC49 77.09%)",
-            }}
             disabled={loading}
-            className={`flex items-center justify-center py-2.5 px-6 text-base font-1 transition-all duration-300 cursor-pointer font-semibold
+            className={`flex items-center justify-center py-2.5  duration-300 transition-all  bg-[linear-gradient(319.78deg,#c19432_13.44%,#fae45f_45.57%,#debc49_77.09%)]
+    shadow-[inset_0_0_0_2px_#f7e05d,inset_3px_3px_6px_#c19432]
+
+    hover:bg-[linear-gradient(139.78deg,#c19432_13.44%,#fae45f_45.57%,#debc49_77.09%)]
+    hover:shadow-[inset_0_0_0_2px_#c19432,inset_-3px_-3px_6px_#debc49] px-6 text-base font-1  cursor-pointer font-semibold
         ${loading ? "bg-gray-400 cursor-not-allowed" : ""}
       `}
           >
